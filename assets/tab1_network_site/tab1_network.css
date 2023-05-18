@@ -1,0 +1,77 @@
+.node {
+  cursor: pointer;
+}
+
+.link {
+  fill: none;
+  stroke: #224559;
+  cursor: pointer;
+  opacity: 0.1;
+}
+
+.ticks {
+  font: 13px sans-serif;
+  fill: black;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: square;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 13px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  cursor: pointer;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+.range-sliderR {
+  position:relative;
+}
+.range-sliderR:before {
+  left: 0;
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+.range-sliderR:after {
+  right: 0;
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+
+.ui-widget {
+  font-family: Metropolis !important; 
+}
+
+.ui-widget b {
+  color: #e95420;
+}
+
+.ui-dialog-title {
+  font-weight: bold;
+  font-size: 20;
+}
