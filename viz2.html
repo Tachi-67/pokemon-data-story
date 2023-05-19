@@ -30,17 +30,20 @@ The code source of the visualization can be found at https://observablehq.com/@a
     <div id="OptionPannel" style="height: auto; width: 90%;"></div>
 </div>
 
-<div id="dialog" title="Map Tutorial">
+<div id="dialog" title="Nature Tutorial">
 
-<b>The Map</b>
-    <p> This map shows the geographical location of all the ATP matches since 2008. 
+<b>The Poekmons' nature</b>
+    <p> In the battle, we definitely want to have Each Pokémon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible.
     </p>
-        <b>The Players</b>
+        <b>Tiers</b>
     <p>
-        Each moving circle corresponds to a player, you can follow his journey from city to city! Between two matches 
-        its position is interpolated on the globe between the start and end position. 
-        For players that don't play for a long time, they smoothly disappear in the middle of the journey and 
-        appear again once they are close to the location of their restarting match.
+      We believe that a pokemon that is used more frequently is more useful. This usage rate is what the Tier stands for.
+      The Tier of pokemons consists of values: 'Uber', 'RU', 'OU', 'UUBL','UU','RUBL', 'RU', 'NUBL', 'NU','PUBL', 'PU' and 'LC'. 
+      Since 'Uber' represents the pokemons that are banned using and 'LC' represents the pokemons that are too weak to be taken into account 
+      when players are arranging their teams, we only use the left tiers. Therefore, the left ones are 'OU', 'UUBL','UU','RUBL', 'RU','NUBL', 'NU','PUBL' and'PU', 
+      where 'OU' represents the most frequently used ones and 'PU' the least. 
+      Then, it is common to believe the total of 6 basic natures reveals a pokemon's power. A higher of total number is, a stronger pokemon is revealed. 
+      Therefore, we want to visualize the relation between Tier and the total as follows. We can see it almost meets our expectations.
     </p>
     <b>The Tournaments</b>
     <p>
