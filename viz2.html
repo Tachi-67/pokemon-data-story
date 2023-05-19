@@ -30,9 +30,81 @@ The code source of the visualization can be found at https://observablehq.com/@a
     <div id="OptionPannel" style="height: auto; width: 90%;"></div>
 </div>
 
+<head>
+  <meta charset="UTF-8">
+  <title>Pokémon Tier Analysis</title>
+  <style>
+    /* 设置容器元素的样式 */
+    .chart-container {
+      width: 400px;
+      height: 400px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pokémon Tier Analysis</h1>
+
+  <!-- 创建容器元素用于放置饼状图 -->
+  <div class="chart-container" id="pie-chart"></div>
+
+  <!-- 引入 D3.js 库 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <script>
+    // 从 pokemon-data.csv 文件中读取数据
+    d3.csv("pokemon-data.csv", function(data) {
+      // 过滤 "Tier" 列值等于 "OU" 的行
+      const filteredData = data.filter(function(d) {
+        return d.Tier === "OU";
+      });
+
+      // 统计 "generation" 列的元素
+      const generationCounts = d3.rollup(filteredData, v => v.length, d => d.generation);
+
+      // 将统计结果转换为 D3 饼状图需要的数据格式
+      const pieData = Array.from(generationCounts, ([key, value]) => ({ generation: key, count: value }));
+
+      // 创建饼状图
+      const svg = d3.select("#pie-chart")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .attr("viewBox", `${-radius} ${-radius} ${radius * 2} ${radius * 2}`)
+        .append("g")
+        .attr("transform", `translate(${radius}, ${radius})`);
+
+      const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+      const pie = d3.pie()
+        .value(d => d.count);
+
+      const arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+
+      const arcs = svg.selectAll("arc")
+        .data(pie(pieData))
+        .enter()
+        .append("g")
+        .attr("class", "arc");
+
+      arcs.append("path")
+        .attr("d", arc)
+        .attr("fill", d => color(d.data.generation));
+
+      arcs.append("text")
+        .attr("transform", d => `translate(${arc.centroid(d)})`)
+        .attr("text-anchor", "middle")
+        .text(d => `${d.data.generation} (${d.data.count})`);
+
+    });
+  </script>
+</body>
+
 <div id="dialog" title="Nature Tutorial">
 
-<b>The Poekmons' nature</b>
+<b>The Pokemons' nature</b>
     <p> In the battle, we definitely want to have Each Pokémon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible.
     </p>
         <b>Tiers</b>
