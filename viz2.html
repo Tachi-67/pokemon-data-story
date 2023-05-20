@@ -52,7 +52,26 @@ The code source of the visualization can be found at https://observablehq.com/@a
 
 <body>
   <div id="chart"></div>
-
+  <p> In the battle, we definitely want to have Each Pokémon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible.
+</p>
+    <b>Tiers</b>
+<p>
+  We believe that a pokemon that is used more frequently is more useful. This usage rate is what the Tier stands for.
+  The Tier of pokemons consists of values: 'Uber', 'RU', 'OU', 'UUBL','UU','RUBL', 'RU', 'NUBL', 'NU','PUBL', 'PU' and 'LC'. 
+  Since 'Uber' represents the pokemons that are banned using and 'LC' represents the pokemons that are too weak to be taken into account 
+  when players are arranging their teams, we only use the left tiers. Therefore, the left ones are 'OU', 'UUBL','UU','RUBL', 'RU','NUBL', 'NU','PUBL' and'PU', 
+  where 'OU' represents the most frequently used ones and 'PU' the least. 
+  Then, it is common to believe the total of 6 basic natures reveals a pokemon's power. A higher of total number is, a stronger pokemon is revealed. 
+  Therefore, we want to visualize the relation between Tier and the total as follows. We can see it almost meets our expectations.
+</p>
+<b>The Tournaments</b>
+<p>
+    The orange circle corresponds to the tournaments that host the ATP matches, the bigger its size, the more 
+    matches the tournaments hosted.
+ </p>
+<p> The map is <i>interactive</i>! Hover over the players and the tournaments to discover additional information.
+    You can also zoom in to have a more precise look at some regions.
+</p>
   <script>
       // 数据
       var data = [{
