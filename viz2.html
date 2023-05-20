@@ -183,7 +183,7 @@ The code source of the visualization can be found at https://observablehq.com/@a
           } else if (value <= 110) {
             ranges["90-110"]++;
           } else {
-            ranges["100+"]++;
+            ranges["110+"]++;
           }
         });
   
@@ -211,7 +211,95 @@ The code source of the visualization can be found at https://observablehq.com/@a
     </script>
   </body>
 
-
+  <body>
+    <h1>Pokemon Stats Pie Charts</h1>
+    <div id="six_natures"></div>
+  
+    <script>
+      // Load data from CSV file
+      d3.csv("pokemon-data-updated.csv").then(function(data) {
+        // Filter rows with Tier equals to "OU"
+        var filteredData = data.filter(function(d) {
+          return d.Tier === "OU";
+        });
+  
+        // Function to calculate distribution based on a given stat
+        function calculateDistribution(stat) {
+          var distribution = {
+            "0-60": 0,
+            "60-90": 0,
+            "90-110": 0,
+            "110+": 0
+          };
+  
+          filteredData.forEach(function(d) {
+            var value = +d[stat];
+            if (value >= 0 && value < 60) {
+              distribution["0-60"]++;
+            } else if (value >= 60 && value < 90) {
+              distribution["60-90"]++;
+            } else if (value >= 90 && value < 110) {
+              distribution["90-110"]++;
+            } else {
+              distribution["110+"]++;
+            }
+          });
+  
+          return distribution;
+        }
+  
+        // Generate pie chart for each stat
+        var stats = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"];
+  
+        stats.forEach(function(stat) {
+          var distribution = calculateDistribution(stat);
+  
+          // Create SVG container for each chart
+          var svg = d3.select("#six_natures")
+            .append("svg")
+            .attr("width", 300)
+            .attr("height", 300);
+  
+          var width = +svg.attr("width");
+          var height = +svg.attr("height");
+          var radius = Math.min(width, height) / 2;
+  
+          // Create pie layout
+          var pie = d3.pie()
+            .value(function(d) {
+              return d.value;
+            })
+            .sort(null);
+  
+          // Define arc
+          var arc = d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius - 20);
+  
+          // Define colors
+          var color = d3.scaleOrdinal()
+            .domain(Object.keys(distribution))
+            .range(d3.schemeCategory10);
+  
+          // Create pie slices
+          var slices = svg.selectAll("path")
+            .data(pie(Object.entries(distribution)))
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .attr("fill", function(d) {
+              return color(d.data.key);
+            });
+  
+          // Add tooltip on mouseover
+          slices.append("title")
+            .text(function(d) {
+              return d.data.key + ": " + d.data.value;
+            });
+        });
+      });
+    </script>
+  </body>
 
 <script type="module">
     // Load the Observable runtime and inspector.
