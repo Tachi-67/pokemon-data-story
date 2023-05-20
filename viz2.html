@@ -97,7 +97,7 @@ The code source of the visualization can be found at https://observablehq.com/@a
 
   <script>
    // 从"pokemon-data.csv"中获取数据
-d3.csv("pokemon.csv").then(function(data) {
+    d3.csv("pokemon.csv").then(function(data) {
     // 提取HP值
     var hpValues = data.map(function(d) {
         return +d.hp;
@@ -153,6 +153,81 @@ d3.csv("pokemon.csv").then(function(data) {
   </script>
 </body>
 
+<body>
+    <div id="natures_distribution"></div>
+  
+    <script>
+      // 从"pokemon-data-updated.csv"中获取数据
+      d3.csv("pokemon-data-updated.csv").then(function(data) {
+        // 选择Tier等于OU的行
+        var ouData = data.filter(function(d) {
+          return d.Tier === "OU";
+        });
+  
+        // 提取所需的属性列
+        var hpValues = ouData.map(function(d) {
+          return +d.HP;
+        });
+        var attackValues = ouData.map(function(d) {
+          return +d.Attack;
+        });
+        var defenseValues = ouData.map(function(d) {
+          return +d.Defense;
+        });
+        var specialAttackValues = ouData.map(function(d) {
+          return +d["Special Attack"];
+        });
+        var specialDefenseValues = ouData.map(function(d) {
+          return +d["Special Defense"];
+        });
+        var speedValues = ouData.map(function(d) {
+          return +d.Speed;
+        });
+  
+        // 定义分布范围
+        var ranges = {
+          "0-60": 0,
+          "60-90": 0,
+          "90-110": 0,
+          "100+": 0
+        };
+  
+        // 统计各范围内的数量
+        hpValues.forEach(function(value) {
+          if (value <= 60) {
+            ranges["0-60"]++;
+          } else if (value <= 90) {
+            ranges["60-90"]++;
+          } else if (value <= 110) {
+            ranges["90-110"]++;
+          } else {
+            ranges["100+"]++;
+          }
+        });
+  
+        // 将分布转换为绘图数据
+        var plotData = Object.keys(ranges).map(function(key) {
+          return { label: key, value: ranges[key] };
+        });
+  
+        // 创建饼图
+        var data = [{
+          values: plotData.map(function(d) { return d.value; }),
+          labels: plotData.map(function(d) { return d.label; }),
+          type: "pie"
+        }];
+  
+        var layout = {
+          title: "Nature Distribution (OU Tier)",
+          height: 400,
+          width: 500
+        };
+  
+        // 绘制可交互的饼图
+        Plotly.newPlot("natures_distribution", data, layout);
+      });
+    </script>
+  </body>
 
 
 
