@@ -75,67 +75,6 @@ The code source of the visualization can be found at https://observablehq.com/@a
 </body>
 
 <body>
-  <div id="HP_distribution"></div>
-
-  <script>
-   // 从"pokemon-data.csv"中获取数据
-    d3.csv("pokemon.csv").then(function(data) {
-    // 提取HP值
-    var hpValues = data.map(function(d) {
-        return +d.hp;
-    });
-
-    // 将HP值按照范围进行分组
-    var hpRanges = {
-        "0-40": 0,
-        "41-60": 0,
-        "61-80": 0,
-        "81-100": 0,
-        "100+": 0
-    };
-
-    hpValues.forEach(function(hp) {
-        if (hp >= 0 && hp <= 40) {
-            hpRanges["0-40"]++;
-        } else if (hp > 40 && hp <= 60) {
-            hpRanges["41-60"]++;
-        } else if (hp > 60 && hp <= 80) {
-            hpRanges["61-80"]++;
-        } else if (hp > 80 && hp <= 100) {
-            hpRanges["81-100"]++;
-        } else {
-            hpRanges["100+"]++;
-        }
-    });
-
-    // 将分布转换为绘图数据
-    var plotData = Object.keys(hpRanges).map(function(key) {
-        return { label: key, value: hpRanges[key] };
-    });
-
-    // 创建饼图
-    var data = [{
-        values: plotData.map(function(d) { return d.value; }),
-        labels: plotData.map(function(d) { return d.label; }),
-        type: "pie"
-    }];
-
-    var layout = {
-        title: "HP Distribution",
-        height: 400,
-        width: 500
-    };
-
-    // 绘制可交互的饼图
-    Plotly.newPlot("HP_distribution", data, layout);
-});
-
-
-
-  </script>
-</body>
-
-<body>
     <div id="natures_distribution"></div>
   
     <script>
