@@ -77,16 +77,11 @@ The code source of the visualization can be found at https://observablehq.com/@a
   <div id="HP_distribution"></div>
 
   <script>
-   
-// 从"pokemon-data.csv"中获取数据
-d3.text("pokemon-data.csv").then(function(text) {
-    var data = d3.csvParseRows(text, function(d) {
-        return d[0].split(";");
-    });
-
-    // 筛选Tier列值为"OU"的所有行
-    var filteredData = data.filter(function(d) {
-        return d[1] === "OU";
+   // 从"pokemon-data.csv"中获取数据
+d3.csv("pokemon.csv").then(function(data) {
+    // 提取HP值
+    var hpValues = data.map(function(d) {
+        return +d.hp;
     });
 
     // 将HP值按照范围进行分组
@@ -98,8 +93,7 @@ d3.text("pokemon-data.csv").then(function(text) {
         "100+": 0
     };
 
-    filteredData.forEach(function(d) {
-        var hp = +d[2];
+    hpValues.forEach(function(hp) {
         if (hp >= 0 && hp <= 40) {
             hpRanges["0-40"]++;
         } else if (hp > 40 && hp <= 60) {
@@ -134,6 +128,7 @@ d3.text("pokemon-data.csv").then(function(text) {
     // 绘制可交互的饼图
     Plotly.newPlot("HP_distribution", data, layout);
 });
+
 
 
   </script>
