@@ -3,9 +3,27 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
   }
-  
-  .chart {
+  .HP_distribution {
     height: 400px;
     width: 500px;
   }
-  
+  .Attack_distribution {
+    height: 400px;
+    width: 500px;
+  }
+  .Defense_distribution {
+    height: 400px;
+    width: 500px;
+  }  
+  .Special_Attack_distribution {
+    height: 400px;
+    width: 500px;
+  }
+  .Special_Defense_distribution {
+    height: 400px;
+    width: 500px;
+  }
+  .Speed_distribution {
+    height: 400px;
+    width: 500px;
+  }
