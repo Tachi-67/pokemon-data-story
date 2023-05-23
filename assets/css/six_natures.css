@@ -1,0 +1,11 @@
+.six_natures {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .chart {
+    height: 400px;
+    width: 500px;
+  }
+  
