@@ -13,7 +13,7 @@ title: Map
 
 
 <div id="dialog" title="Nature Tutorial">
-
+<!--
 <b>The Pokemons' nature</b>
     <p> In the battle, we definitely want to have Each Pokémon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible.
     </p>
@@ -38,7 +38,7 @@ title: Map
 </div>
 
 <br><br>
-
+-->
 <script src="assets/tab1_network_site/lib/jquery.min.js"></script>
 <script src="assets/tab1_network_site/lib/jquery-3.6.0.js"></script>
 <script src="assets/tab1_network_site/lib/jquery-ui.js"></script>
@@ -66,9 +66,11 @@ title: Map
 
 </body>
 
+<!--
 <body>
     <div id="natures_distribution"></div>
   
+-->
     <script>
       // 从"pokemon-data-updated.csv"中获取数据
       d3.csv("pokemon-data-updated.csv").then(function(data) {
@@ -321,7 +323,8 @@ title: Map
         Plotly.newPlot("Speed_distribution", data_Speed, layout_Speed);
       });
     </script>
-  </body>
+    <!--   </body> -->
+ 
 
  <!--
 <head>
@@ -402,7 +405,7 @@ title: Map
     </script>
 </body>
 
---> 
+
 
 <script type="module">
     // Load the Observable runtime and inspector.
@@ -447,3 +450,4 @@ title: Map
       });
     } );
   </script>
+  --> 
