@@ -1,29 +1,9 @@
-.six_natures {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
   }
-  .HP_distribution {
-    height: 400px;
-    width: 500px;
+  
+  .chart-column {
+    flex-basis: calc(100% / 3);
   }
-  .Attack_distribution {
-    height: 400px;
-    width: 500px;
-  }
-  .Defense_distribution {
-    height: 400px;
-    width: 500px;
-  }  
-  .Special_Attack_distribution {
-    height: 400px;
-    width: 500px;
-  }
-  .Special_Defense_distribution {
-    height: 400px;
-    width: 500px;
-  }
-  .Speed_distribution {
-    height: 400px;
-    width: 500px;
-  }
+  
