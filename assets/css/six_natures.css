@@ -1,23 +1,14 @@
-.six_natures {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 10px;
-  }
-  
-  .chart-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-  }
-  
-  .chart-column {
-    width: 100%;
-  }
-  
-  .chart-column div {
-    width: 100%;
-    height: 200px; /* 调整图片的高度 */
-    background-color: #ccc; /* 设置图片的背景颜色，可以根据需要进行更改 */
-  }
-  
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+}

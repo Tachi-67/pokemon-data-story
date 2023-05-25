@@ -241,11 +241,11 @@ d3.csv("pokemon-data-updated.csv").then(function(data) {
     };
   
     // 绘制图表
-    Plotly.newPlot("HP_distribution", data_HP, layout_HP);
-    Plotly.newPlot("Attack_distribution", data_Attack, layout_Attack);
-    Plotly.newPlot("Special_Attack_distribution", data_Special_Attack, layout_Special_Attack);
-    Plotly.newPlot("Defense_distribution", data_Defense, layout_Defense);
-    Plotly.newPlot("Special_Defense_distribution", data_Special_Defense, layout_Special_Defense);
-    Plotly.newPlot("Speed_distribution", data_Speed, layout_Speed);
+    Plotly.newPlot("HP_chart", data_HP, layout_HP);
+    Plotly.newPlot("Attack_chart", data_Attack, layout_Attack);
+    Plotly.newPlot("Special_Attack_chart", data_Special_Attack, layout_Special_Attack);
+    Plotly.newPlot("Defense_chart", data_Defense, layout_Defense);
+    Plotly.newPlot("Special_Defense_chart", data_Special_Defense, layout_Special_Defense);
+    Plotly.newPlot("Speed_chart", data_Speed, layout_Speed);
   });
   
