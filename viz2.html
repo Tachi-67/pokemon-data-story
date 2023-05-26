@@ -9,6 +9,7 @@ title: Map
 <link rel="stylesheet" href="assets/tab1_network_site/lib/jquery-ui.css">
 <link rel="stylesheet" href="assets/tab1_network_site/lib/jquery.dataTables.min.css">
 <link rel="stylesheet" href="assets/css/viz2.css">
+<link rel="stylesheet" type="text/css" href="assets/css/generation_nature.css">
 
 
 
@@ -116,6 +117,26 @@ title: Map
     <div id="Speed_chart" class="chart"></div>
   </div> 
   <script src="assets/js/six_natures.js"></script>
+
+  <h1> Generation Distribution </h1>
+  <h1>Target HTML</h1>
+
+  <div id="chart"></div>
+
+  <div id="attribute-selector">
+    <label for="attribute-select">Select Attribute:</label>
+    <select id="attribute-select">
+      <option value="base_total">Base Total</option>
+      <option value="attack">Attack</option>
+      <option value="defense">Defense</option>
+      <option value="sp_attack">Special Attack</option>
+      <option value="sp_defense">Special Defense</option>
+      <option value="speed">Speed</option>
+    </select>
+  </div>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="assets/js/generation_nature.js"></script>
 </body>
 
  <!--

@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #chart {
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  
+  #attribute-selector {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #attribute-select {
+    padding: 5px;
+  }
+  
