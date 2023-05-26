@@ -161,7 +161,7 @@ Plotly.d3.csv("pokemon-data-updated.csv", function(err, data) {
     barmode: 'group',
     xaxis: { title: 'Stat Range' },
     yaxis: { title: 'Count' },
-    title: 'Pokemon Data Histogram (Tier: OU)'
+    title: 'Nature (Tier: OU)'
   };
     // 将数据和布局配置绘制成图表
     Plotly.newPlot('HP_chart', [hpData], layout);
