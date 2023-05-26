@@ -170,37 +170,37 @@ d3.csv("pokemon-data-updated.csv").then(function(data) {
     var data_HP = [{
       values: plot_HP.map(function(d) { return d.value; }),
       labels: plot_HP.map(function(d) { return d.label; }),
-      type: "pie"
+      type: "bar"
     }];
   
     var data_Attack = [{
       values: plot_Attack.map(function(d) { return d.value; }),
       labels: plot_Attack.map(function(d) { return d.label; }),
-      type: "pie"
+      type: "bar"
     }];
   
     var data_Special_Attack = [{
       values: plot_Special_Attack.map(function(d) { return d.value; }),
       labels: plot_Special_Attack.map(function(d) { return d.label; }),
-      type: "pie"
+      type: "bar"
     }];
   
     var data_Defense = [{
       values: plot_Defense.map(function(d) { return d.value; }),
       labels: plot_Defense.map(function(d) { return d.label; }),
-      type: "pie"
+      type: "bar"
     }];
   
     var data_Special_Defense = [{
       values: plot_Special_Defense.map(function(d) { return d.value; }),
       labels: plot_Special_Defense.map(function(d) { return d.label; }),
-      type: "pie"
+      type: "bar"
     }];
   
     var data_Speed = [{
       values: plot_Speed.map(function(d) { return d.value; }),
       labels: plot_Speed.map(function(d) { return d.label; }),
-      type: "pie"
+      type: "bar"
     }];
   
     // 定义布局
