@@ -55,8 +55,53 @@ Plotly.d3.csv("pokemon-data-updated.csv", function(err, data) {
       groupedData['120+'].Attack++;
     }
 
-    // 类似地，对其他属性进行分组
-    // ...
+    if (defense <= 60) {
+      groupedData['0-60'].Defense++;
+    } else if (defense <= 90) {
+      groupedData['61-90'].Defense++;
+    } else if (defense <= 100) {
+      groupedData['91-100'].Defense++;
+    } else if (defense <= 120) {
+      groupedData['101-120'].Defense++;
+    } else {
+      groupedData['120+'].Defense++;
+    }
+
+    if (specialAttack <= 60) {
+      groupedData['0-60']['Special Attack']++;
+    } else if (specialAttack <= 90) {
+      groupedData['61-90']['Special Attack']++;
+    } else if (specialAttack <= 100) {
+      groupedData['91-100']['Special Attack']++;
+    } else if (specialAttack <= 120) {
+      groupedData['101-120']['Special Attack']++;
+    } else {
+      groupedData['120+']['Special Attack']++;
+    }
+
+    if (specialDefense <= 60) {
+      groupedData['0-60']['Special Defense']++;
+    } else if (specialDefense <= 90) {
+      groupedData['61-90']['Special Defense']++;
+    } else if (specialDefense <= 100) {
+      groupedData['91-100']['Special Defense']++;
+    } else if (specialDefense <= 120) {
+      groupedData['101-120']['Special Defense']++;
+    } else {
+      groupedData['120+']['Special Defense']++;
+    }
+
+    if (speed <= 60) {
+      groupedData['0-60'].Speed++;
+    } else if (speed <= 90) {
+      groupedData['61-90'].Speed++;
+    } else if (speed <= 100) {
+      groupedData['91-100'].Speed++;
+    } else if (speed <= 120) {
+      groupedData['101-120'].Speed++;
+    } else {
+      groupedData['120+'].Speed++;
+    }
 
   });
 
