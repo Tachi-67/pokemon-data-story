@@ -157,18 +157,48 @@ Plotly.d3.csv("pokemon-data-updated.csv", function(err, data) {
   };
 
   // 创建布局配置
-  var layout = {
+  var layout_HP = {
     barmode: 'group',
     xaxis: { title: 'Stat Range' },
     yaxis: { title: 'Count' },
-    title: 'Nature (Tier: OU)'
+    title: 'HP (Tier: OU)'
+  };
+  var layout_Atk = {
+    barmode: 'group',
+    xaxis: { title: 'Stat Range' },
+    yaxis: { title: 'Count' },
+    title: 'Attack (Tier: OU)'
+  };
+  var layout_Def = {
+    barmode: 'group',
+    xaxis: { title: 'Stat Range' },
+    yaxis: { title: 'Count' },
+    title: 'Defense (Tier: OU)'
+  };
+  var layout_SPA = {
+    barmode: 'group',
+    xaxis: { title: 'Stat Range' },
+    yaxis: { title: 'Count' },
+    title: 'Special Attack (Tier: OU)'
+  };
+  var layout_SPD = {
+    barmode: 'group',
+    xaxis: { title: 'Stat Range' },
+    yaxis: { title: 'Count' },
+    title: 'Special Defense (Tier: OU)'
+  };
+  var layout_SPE = {
+    barmode: 'group',
+    xaxis: { title: 'Stat Range' },
+    yaxis: { title: 'Count' },
+    title: 'Speed (Tier: OU)'
   };
     // 将数据和布局配置绘制成图表
-    Plotly.newPlot('HP_chart', [hpData], layout);
-    Plotly.newPlot('Attack_chart', [attackData], layout);
-    Plotly.newPlot('Defense_chart', [defenseData], layout);
-    Plotly.newPlot('Special_Attack_chart', [specialAttackData], layout);
-    Plotly.newPlot('Special_Defense_chart', [specialDefenseData], layout);
-    Plotly.newPlot('Speed_chart', [speedData], layout);
+    Plotly.newPlot('HP_chart', [hpData], layout_HP);
+    Plotly.newPlot('Attack_chart', [attackData], layout_Atk);
+    Plotly.newPlot('Defense_chart', [defenseData], layout_Def);
+    Plotly.newPlot('Special_Attack_chart', [specialAttackData], layout_SPA);
+    Plotly.newPlot('Special_Defense_chart', [specialDefenseData], layout_SPD);
+    Plotly.newPlot('Speed_chart', [speedData], layout_SPE);
   });
   
