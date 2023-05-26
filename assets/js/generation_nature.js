@@ -1,41 +1,40 @@
-// 使用fetch API加载CSV文件
-fetch('pokemon.csv')
-  .then(response => response.text())
-  .then(csvData => {
-    // 将CSV数据解析为数组
-    var pokemonData = parseCSV(csvData);
+d3.csv('pokemon.csv').then(function(pokemonData) {
+    // 在此处继续处理数据和生成图表的逻辑
+
+    // 将CSV数据解析为数字类型
+    pokemonData.forEach(function(d) {
+      d.hp = +d.hp;
+      d.generation = +d.generation;
+      d.base_total = +d.base_total;
+      d.attack = +d.attack;
+      d.defense = +d.defense;
+      d.sp_attack = +d.sp_attack;
+      d.sp_defense = +d.sp_defense;
+      d.speed = +d.speed;
+    });
 
     // 获取每个generation的平均值
-    var generations = [...new Set(pokemonData.map(pokemon => pokemon.generation))];
-    var averageStats = {};
-
-    generations.forEach(generation => {
-      var filteredPokemons = pokemonData.filter(pokemon => pokemon.generation === generation);
-      var total = filteredPokemons.reduce((sum, pokemon) => sum + Number(pokemon.base_total), 0);
-      var attack = filteredPokemons.reduce((sum, pokemon) => sum + Number(pokemon.attack), 0);
-      var defense = filteredPokemons.reduce((sum, pokemon) => sum + Number(pokemon.defense), 0);
-      var spAttack = filteredPokemons.reduce((sum, pokemon) => sum + Number(pokemon.sp_attack), 0);
-      var spDefense = filteredPokemons.reduce((sum, pokemon) => sum + Number(pokemon.sp_defense), 0);
-      var speed = filteredPokemons.reduce((sum, pokemon) => sum + Number(pokemon.speed), 0);
-      var count = filteredPokemons.length;
-
-      averageStats[generation] = {
-        base_total: total / count,
-        attack: attack / count,
-        defense: defense / count,
-        sp_attack: spAttack / count,
-        sp_defense: spDefense / count,
-        speed: speed / count
-      };
-    });
+    var generations = d3.nest()
+      .key(function(d) { return d.generation; })
+      .rollup(function(values) {
+        return {
+          base_total: d3.mean(values, function(d) { return d.base_total; }),
+          attack: d3.mean(values, function(d) { return d.attack; }),
+          defense: d3.mean(values, function(d) { return d.defense; }),
+          sp_attack: d3.mean(values, function(d) { return d.sp_attack; }),
+          sp_defense: d3.mean(values, function(d) { return d.sp_defense; }),
+          speed: d3.mean(values, function(d) { return d.speed; })
+        };
+      })
+      .entries(pokemonData);
 
     // 默认选择的属性
     var selectedAttribute = 'base_total';
 
     // 创建图表数据
     var data = [{
-      x: Object.keys(averageStats),
-      y: Object.values(averageStats[selectedAttribute]),
+      x: generations.map(function(d) { return d.key; }),
+      y: generations.map(function(d) { return d.value[selectedAttribute]; }),
       type: 'bar',
       name: selectedAttribute
     }];
@@ -48,37 +47,17 @@ fetch('pokemon.csv')
     };
 
     // 生成图表
-    Plotly.newPlot('chart', data, layout);
+    Plotly.newPlot('gen_chart', data, layout);
 
     // 监听属性选择器的变化
-    document.getElementById('attribute-select').addEventListener('change', function(event) {
-      selectedAttribute = event.target.value;
+    d3.select('#attribute-select').on('change', function() {
+      selectedAttribute = this.value;
 
       // 更新图表数据
-      data[0].y = Object.values(averageStats[selectedAttribute]);
+      data[0].y = generations.map(function(d) { return d.value[selectedAttribute]; });
       layout.title = 'Average Pokemon ' + selectedAttribute.replace('_', ' ').toUpperCase() + ' by Generation';
 
       // 更新图表
-      Plotly.update('chart', data, layout);
+      Plotly.update('gen_chart', data, layout);
     });
   });
-
-// CSV解析函数
-function parseCSV(csv) {
-  var lines = csv.trim().split('\n');
-  var headers = lines.shift().split(',');
-  var result = [];
-
-  lines.forEach(line => {
-    var values = line.split(',');
-    var obj = {};
-
-    headers.forEach((header, index) => {
-      obj[header] = values[index];
-    });
-
-    result.push(obj);
-  });
-
-  return result;
-}
