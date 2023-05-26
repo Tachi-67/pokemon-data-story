@@ -61,31 +61,6 @@ d3.csv("pokemon-data-updated.csv").then(function(data) {
       name: 'Speed'
     };
   
-    // 将分布转换为绘图数据
-    var plot_HP = Object.keys(ranges_hp).map(function(key) {
-      return { label: key, value: ranges_hp[key] };
-    });
-  
-    var plot_Attack = Object.keys(ranges_attack).map(function(key) {
-      return { label: key, value: ranges_attack[key] };
-    });
-  
-    var plot_Special_Attack = Object.keys(ranges_spattack).map(function(key) {
-      return { label: key, value: ranges_spattack[key] };
-    });
-  
-    var plot_Defense = Object.keys(ranges_defense).map(function(key) {
-      return { label: key, value: ranges_defense[key] };
-    });
-  
-    var plot_Special_Defense = Object.keys(ranges_spdefense).map(function(key) {
-      return { label: key, value: ranges_spdefense[key] };
-    });
-  
-    var plot_Speed = Object.keys(ranges_speed).map(function(key) {
-      return { label: key, value: ranges_speed[key] };
-    });
-  
     var layout = {
       barmode: 'overlay',
       xaxis: { title: 'Stat Value' },
@@ -94,11 +69,11 @@ d3.csv("pokemon-data-updated.csv").then(function(data) {
     };
 
     // 将数据和布局配置绘制成图表
-    Plotly.newPlot('HP_chart', [hpData], layout);
-    Plotly.newPlot('Attack_chart', [attackData], layout);
-    Plotly.newPlot('Defense_chart', [defenseData], layout);
-    Plotly.newPlot('Special_Attack_chart', [specialAttackData], layout);
-    Plotly.newPlot('Special_Defense_chart', [specialDefenseData], layout);
-    Plotly.newPlot('Speed_chart', [speedData], layout);
+    Plotly.newPlot('HP_chart', hpData, layout);
+    Plotly.newPlot('Attack_chart', attackData, layout);
+    Plotly.newPlot('Defense_chart', defenseData, layout);
+    Plotly.newPlot('Special_Attack_chart', specialAttackData, layout);
+    Plotly.newPlot('Special_Defense_chart', specialDefenseData, layout);
+    Plotly.newPlot('Speed_chart', speedData, layout);
   });
   
