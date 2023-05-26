@@ -1,73 +1,123 @@
-// 从"pokemon-data-updated.csv"中获取数据
-  Plotly.d3.csv("pokemon-data-updated.csv").then(function(data) {
-    // 选择Tier等于OU的行
-    var ouData = data.filter(function(d) {
-      return d.Tier === "OU";
-    });
-  
-    // 提取所需的属性列
-    var hpValues = ouData.map(function(d) {
-      return +d.HP;
-    });
-    var attackValues = ouData.map(function(d) {
-      return +d.Attack;
-    });
-    var defenseValues = ouData.map(function(d) {
-      return +d.Defense;
-    });
-    var specialAttackValues = ouData.map(function(d) {
-      return +d["Special Attack"];
-    });
-    var specialDefenseValues = ouData.map(function(d) {
-      return +d["Special Defense"];
-    });
-    var speedValues = ouData.map(function(d) {
-      return +d.Speed;
-    });
-  
-    var hpData = {
-      x: hpValues,
-      type: 'histogram',
-      name: 'HP'
-    };
+Plotly.d3.csv("pokemon-data-updated.csv", function(err, data) {
+  if (err) throw err;
 
-    var attackData = {
-      x: attackValues,
-      type: 'histogram',
-      name: 'Attack'
-    };
+  // 筛选出 Tier 等于 "OU" 的数据
+  var filteredData = data.filter(function(d) {
+    return d.Tier === "OU";
+  });
 
-    var defenseData = {
-      x: defenseValues,
-      type: 'histogram',
-      name: 'Defense'
-    };
+  // 分组数值范围
+  var groupRanges = ['0-60', '61-90', '91-100', '101-120', '120+'];
 
-    var specialAttackData = {
-      x: specialAttackValues,
-      type: 'histogram',
-      name: 'Special Attack'
+  // 初始化分组对象
+  var groupedData = {};
+  groupRanges.forEach(function(range) {
+    groupedData[range] = {
+      HP: 0,
+      Attack: 0,
+      Defense: 0,
+      'Special Attack': 0,
+      'Special Defense': 0,
+      Speed: 0
     };
+  });
 
-    var specialDefenseData = {
-      x: specialDefenseValues,
-      type: 'histogram',
-      name: 'Special Defense'
-    };
+  // 遍历筛选后的数据，根据数值范围进行分组
+  filteredData.forEach(function(d) {
+    var hp = +d.HP;
+    var attack = +d.Attack;
+    var defense = +d.Defense;
+    var specialAttack = +d['Special Attack'];
+    var specialDefense = +d['Special Defense'];
+    var speed = +d.Speed;
 
-    var speedData = {
-      x: speedValues,
-      type: 'histogram',
-      name: 'Speed'
-    };
-  
-    var layout = {
-      barmode: 'overlay',
-      xaxis: { title: 'Stat Value' },
-      yaxis: { title: 'Count' },
-      title: 'Pokemon Data Histogram'
-    };
+    if (hp <= 60) {
+      groupedData['0-60'].HP++;
+    } else if (hp <= 90) {
+      groupedData['61-90'].HP++;
+    } else if (hp <= 100) {
+      groupedData['91-100'].HP++;
+    } else if (hp <= 120) {
+      groupedData['101-120'].HP++;
+    } else {
+      groupedData['120+'].HP++;
+    }
 
+    if (attack <= 60) {
+      groupedData['0-60'].Attack++;
+    } else if (attack <= 90) {
+      groupedData['61-90'].Attack++;
+    } else if (attack <= 100) {
+      groupedData['91-100'].Attack++;
+    } else if (attack <= 120) {
+      groupedData['101-120'].Attack++;
+    } else {
+      groupedData['120+'].Attack++;
+    }
+
+    // 类似地，对其他属性进行分组
+    // ...
+
+  });
+
+  // 提取分组后的数据
+  var hpValues = Object.values(groupedData).map(function(d) { return d.HP; });
+  var attackValues = Object.values(groupedData).map(function(d) { return d.Attack; });
+  var defenseValues = Object.values(groupedData).map(function(d) { return d.Defense; });
+  var specialAttackValues = Object.values(groupedData).map(function(d) { return d['Special Attack']; });
+  var specialDefenseValues = Object.values(groupedData).map(function(d) { return d['Special Defense']; });
+  var speedValues = Object.values(groupedData).map(function(d) { return d.Speed; });
+
+  // 创建直方图数据
+  var hpData = {
+    x: groupRanges,
+    y: hpValues,
+    type: 'bar',
+    name: 'HP'
+  };
+
+  var attackData = {
+    x: groupRanges,
+    y: attackValues,
+    type: 'bar',
+    name: 'Attack'
+  };
+
+  var defenseData = {
+    x: groupRanges,
+    y: defenseValues,
+    type: 'bar',
+    name: 'Defense'
+  };
+
+  var specialAttackData = {
+    x: groupRanges,
+    y: specialAttackValues,
+    type: 'bar',
+    name: 'Special Attack'
+  };
+
+  var specialDefenseData = {
+    x: groupRanges,
+    y: specialDefenseValues,
+    type: 'bar',
+    name: 'Special Defense'
+  };
+
+  var speedData = {
+    x: groupRanges,
+    y: speedValues,
+    type: 'bar',
+    name: 'Speed'
+  };
+
+  // 创建布局配置
+  var layout = {
+    barmode: 'group',
+    xaxis: { title: 'Stat Range' },
+    yaxis: { title: 'Count' },
+    title: 'Pokemon Data Histogram (Tier: OU)'
+  };
     // 将数据和布局配置绘制成图表
     Plotly.newPlot('HP_chart', [hpData], layout);
     Plotly.newPlot('Attack_chart', [attackData], layout);
