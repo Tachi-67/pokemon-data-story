@@ -1,5 +1,5 @@
 // 从"pokemon-data-updated.csv"中获取数据
-d3.csv("pokemon-data-updated.csv").then(function(data) {
+  Plotly.d3.csv("pokemon-data-updated.csv").then(function(data) {
     // 选择Tier等于OU的行
     var ouData = data.filter(function(d) {
       return d.Tier === "OU";
@@ -69,11 +69,11 @@ d3.csv("pokemon-data-updated.csv").then(function(data) {
     };
 
     // 将数据和布局配置绘制成图表
-    Plotly.newPlot('HP_chart', hpData, layout);
-    Plotly.newPlot('Attack_chart', attackData, layout);
-    Plotly.newPlot('Defense_chart', defenseData, layout);
-    Plotly.newPlot('Special_Attack_chart', specialAttackData, layout);
-    Plotly.newPlot('Special_Defense_chart', specialDefenseData, layout);
-    Plotly.newPlot('Speed_chart', speedData, layout);
+    Plotly.newPlot('HP_chart', [hpData], layout);
+    Plotly.newPlot('Attack_chart', [attackData], layout);
+    Plotly.newPlot('Defense_chart', [defenseData], layout);
+    Plotly.newPlot('Special_Attack_chart', [specialAttackData], layout);
+    Plotly.newPlot('Special_Defense_chart', [specialDefenseData], layout);
+    Plotly.newPlot('Speed_chart', [speedData], layout);
   });
   
