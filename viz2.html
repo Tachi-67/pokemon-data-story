@@ -122,14 +122,15 @@ title: Map
   <br>
   <h1> Generation Distribution </h1>
   <select id="chartSelect" onchange="changeChart()">
-    <option value="HP_mean.html">HP</option>
-    <option value="Attack_mean.html">Attack</option>
-    <option value="Defense_mean.html">Defense</option>
-    <option value="Special_Attack_mean.html">Special Attack</option>
-    <option value="Special_Defense_mean.html">Special Defense</option>
-    <option value="Speed_mean.html">Speed</option>
-    <option value="Base_total_mean.html">Base Total</option>
+    <option value="assets/images/HP_mean.html">HP</option>
+    <option value="assets/images/Attack_mean.html">Attack</option>
+    <option value="assets/images/Defense_mean.html">Defense</option>
+    <option value="assets/images/Special_Attack_mean.html">Special Attack</option>
+    <option value="assets/images/Special_Defense_mean.html">Special Defense</option>
+    <option value="assets/images/Speed_mean.html">Speed</option>
+    <option value="assets/images/Base_total_mean.html">Base Total</option>
   </select>
+  
 
   <div id="chartContainer_gen">
     <!-- Placeholder for chart -->
@@ -137,7 +138,7 @@ title: Map
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
-     var charts = {};
+   var currentChart = null;
 
 function changeChart() {
   var select = document.getElementById("chartSelect");
@@ -145,20 +146,19 @@ function changeChart() {
 
   var chartContainer = document.getElementById("chartContainer");
 
-  // Hide previously shown chart
-  var previousChart = charts[selectedChart];
-  if (previousChart) {
-    previousChart.destroy();
+  // Remove previously shown chart
+  if (currentChart) {
+    currentChart.innerHTML = '';
   }
 
-  // Show selected chart
-  Plotly.d3.text("assets/images/" + selectedChart, function(data) {
-    var plotlyData = JSON.parse(data);
+  // Create and load new chart
+  var chartFrame = document.createElement("iframe");
+  chartFrame.src = selectedChart;
+  chartFrame.style.width = "100%";
+  chartFrame.style.height = "600px";
+  chartContainer.appendChild(chartFrame);
 
-    Plotly.newPlot(chartContainer, plotlyData.data, plotlyData.layout).then(function(chart) {
-      charts[selectedChart] = chart;
-    });
-  });
+  currentChart = chartFrame;
 }
   </script>
 </body>
