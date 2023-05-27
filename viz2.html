@@ -137,53 +137,35 @@ title: Map
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
-      var charts = {};
+      var chartFiles = {
+      "HP_mean": "HP_mean.html", 
+      "Attack_mean": "Attack_mean.html", 
+      "Defense_mean": "Defense_mean.html", 
+      "Special_Attack_mean": "Special_Attack_mean.html", 
+      "Special_Defense_mean": "Special_Defense_mean.html", 
+      "Speed_mean": "Speed_mean.html", 
+      "Base_total_mean": "Base_total_mean.html"
+    };
 
-function changeChart() {
-  var select = document.getElementById("chartSelect");
-  var selectedChart = select.options[select.selectedIndex].value;
+    var currentChart = null;
 
-  var chartContainer = document.getElementById("chartContainer");
+    function changeChart() {
+      var select = document.getElementById("chartSelect");
+      var selectedChart = select.options[select.selectedIndex].value;
 
-  // Hide previously shown chart
-  var previousChart = charts[selectedChart];
-  if (previousChart) {
-    previousChart.destroy();
-  }
+      var chartContainer = document.getElementById("chartContainer");
 
-  // Show selected chart
-  Plotly.d3.csv("assets/images/" + selectedChart, function(data) {
-    var xData = [];
-    var yData = [];
-    for (var i = 0; i < data.length; i++) {
-      xData.push(data[i].generation);
-      yData.push(parseFloat(data[i].mean));
+      if (currentChart) {
+        chartContainer.removeChild(currentChart);
+      }
+
+      currentChart = document.createElement("iframe");
+      currentChart.src = "assets/images/" + chartFiles[selectedChart];
+      currentChart.style.width = "100%";
+      currentChart.style.height = "600px";
+
+      chartContainer.appendChild(currentChart);
     }
-
-    var trace = {
-      x: xData,
-      y: yData,
-      type: 'bar',
-      marker: {
-        color: 'rgb(0, 128, 0)'
-      }
-    };
-
-    var layout = {
-      title: 'Mean ' + selectedChart.split('_')[0].toUpperCase() + ' by Generation',
-      xaxis: {
-        title: 'Generation'
-      },
-      yaxis: {
-        title: 'Mean ' + selectedChart.split('_')[0].toUpperCase()
-      }
-    };
-
-    Plotly.newPlot(chartContainer, [trace], layout).then(function(chart) {
-      charts[selectedChart] = chart;
-    });
-  });
-}
   
   </script>
 </body>
