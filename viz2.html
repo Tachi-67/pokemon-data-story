@@ -117,7 +117,9 @@ title: Map
     <div id="Speed_chart" class="chart"></div>
   </div> 
   <script src="assets/js/six_natures.js"></script>
-
+  <br>
+  <br>
+  <br>
   <h1> Generation Distribution </h1>
   <select id="chartSelect" onchange="changeChart()">
     <option value="HP_mean.html">HP</option>
@@ -135,19 +137,21 @@ title: Map
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
-    function changeChart() {
+      function changeChart() {
       var select = document.getElementById("chartSelect");
       var selectedChart = select.options[select.selectedIndex].value;
 
       var chartContainer = document.getElementById("chartContainer");
       chartContainer.innerHTML = "";
 
-      // Load and display the selected chart
-      Plotly.d3.html('assets/images/' + selectedChart, function(text){
-        chartContainer.innerHTML = text;
+      // Create an <img> element
+      var img = document.createElement("img");
+      img.src = "assets/images/" + selectedChart;
 
-      });
+      // Append the <img> element to the chartContainer
+      chartContainer.appendChild(img);
     }
+  </script>
   </script>
 </body>
 
