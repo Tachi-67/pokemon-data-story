@@ -137,19 +137,58 @@ title: Map
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
-      function changeChart() {
+      var charts = {
+      "HP_mean.html": {}, 
+      "Attack_mean.html": {}, 
+      "Defense_mean.html": {}, 
+      "Special_Attack_mean.html": {}, 
+      "Special_Defense_mean.html": {}, 
+      "Speed_mean.html": {}, 
+      "Base_total_mean.html": {}
+    };
+
+    function changeChart() {
       var select = document.getElementById("chartSelect");
       var selectedChart = select.options[select.selectedIndex].value;
 
       var chartContainer = document.getElementById("chartContainer");
-      chartContainer.innerHTML = "";
 
-      // Create an <img> element
-      var img = document.createElement("img");
-      img.src = "assets/images/" + selectedChart;
+      // Hide previously shown chart
+      var previousChart = Object.values(charts).find(chart => chart.isVisible);
+      if (previousChart) {
+        Plotly.Plots.purge(previousChart);
+        previousChart.isVisible = false;
+      }
 
-      // Append the <img> element to the chartContainer
-      chartContainer.appendChild(img);
+      // Show selected chart
+      if (!charts[selectedChart].isVisible) {
+        Plotly.newPlot(chartContainer, [], {}, {displayModeBar: true}).then(function(chart) {
+          Plotly.d3.csv("assets/images/" + selectedChart, function(data) {
+            var xData = [];
+            var yData = [];
+            for (var i = 0; i < data.length; i++) {
+              xData.push(data[i].generation);
+              yData.push(parseFloat(data[i].mean));
+            }
+
+            var trace = {
+              x: xData,
+              y: yData,
+              type: 'bar',
+              marker: {
+                color: 'rgb(0, 128, 0)'
+              }
+            };
+
+            Plotly.addTraces(chartContainer, trace);
+          });
+
+          charts[selectedChart] = chart;
+          charts[selectedChart].isVisible = true;
+        });
+      } else {
+        charts[selectedChart].isVisible = false;
+      }
     }
   </script>
   </script>
