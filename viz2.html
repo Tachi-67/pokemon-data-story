@@ -148,7 +148,7 @@ function changeChart() {
 
   // Remove previously shown chart
   if (currentChart) {
-    currentChart.innerHTML = '';
+    chartContainer.removeChild(currentChart);
   }
 
   // Create and load new chart
