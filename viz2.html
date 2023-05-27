@@ -137,35 +137,29 @@ title: Map
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
-      var chartFiles = {
-      "HP_mean": "assets/images/HP_mean.html", 
-      "Attack_mean": "assets/images/Attack_mean.html", 
-      "Defense_mean": "assets/images/Defense_mean.html", 
-      "Special_Attack_mean": "assets/images/Special_Attack_mean.html", 
-      "Special_Defense_mean": "assets/images/Special_Defense_mean.html", 
-      "Speed_mean": "assets/images/Speed_mean.html", 
-      "Base_total_mean": "assets/images/Base_total_mean.html"
-    };
+     var charts = {};
 
-    var currentChart = null;
+function changeChart() {
+  var select = document.getElementById("chartSelect");
+  var selectedChart = select.options[select.selectedIndex].value;
 
-    function changeChart() {
-      var select = document.getElementById("chartSelect");
-      var selectedChart = select.options[select.selectedIndex].value;
+  var chartContainer = document.getElementById("chartContainer");
 
-      var chartContainer = document.getElementById("chartContainer_gen");
+  // Hide previously shown chart
+  var previousChart = charts[selectedChart];
+  if (previousChart) {
+    previousChart.destroy();
+  }
 
-      if (currentChart) {
-        chartContainer.removeChild(currentChart);
-      }
+  // Show selected chart
+  Plotly.d3.text("assets/images/" + selectedChart, function(data) {
+    var plotlyData = JSON.parse(data);
 
-      currentChart = document.createElement("iframe");
-      currentChart.src = chartFiles[selectedChart];
-      currentChart.style.width = "100%";
-      currentChart.style.height = "600px";
-
-      chartContainer.appendChild(currentChart);
-    }
+    Plotly.newPlot(chartContainer, plotlyData.data, plotlyData.layout).then(function(chart) {
+      charts[selectedChart] = chart;
+    });
+  });
+}
   </script>
 </body>
 
