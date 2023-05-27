@@ -119,21 +119,36 @@ title: Map
   <script src="assets/js/six_natures.js"></script>
 
   <h1> Generation Distribution </h1>
-  <div id="gen_chart"> </div>
-  <div id="attribute-selector">
-    <label for="attribute-select">Select Attribute:</label>
-    <select id="attribute-select">
-      <option value="base_total">Base Total</option>
-      <option value="attack">Attack</option>
-      <option value="defense">Defense</option>
-      <option value="sp_attack">Special Attack</option>
-      <option value="sp_defense">Special Defense</option>
-      <option value="speed">Speed</option>
-    </select>
+  <select id="chartSelect" onchange="changeChart()">
+    <option value="HP_mean.html">HP</option>
+    <option value="Attack_mean.html">Attack</option>
+    <option value="Defense_mean.html">Defense</option>
+    <option value="Special_Attack_mean.html">Special Attack</option>
+    <option value="Special_Defense_mean.html">Special Defense</option>
+    <option value="Speed_mean.html">Speed</option>
+    <option value="Base_total_mean.html">Base Total</option>
+  </select>
+
+  <div id="chartContainer">
+    <!-- Placeholder for chart -->
   </div>
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="assets/js/generation_nature.js"></script>
+  <script>
+    function changeChart() {
+      var select = document.getElementById("chartSelect");
+      var selectedChart = select.options[select.selectedIndex].value;
+
+      var chartContainer = document.getElementById("chartContainer");
+      chartContainer.innerHTML = "";
+
+      // Load and display the selected chart
+      Plotly.d3.html('assets/images/' + selectedChart, function(text){
+        chartContainer.innerHTML = text;
+
+      });
+    }
+  </script>
 </body>
 
  <!--
