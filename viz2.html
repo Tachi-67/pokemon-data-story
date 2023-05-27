@@ -138,13 +138,13 @@ title: Map
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
       var chartFiles = {
-      "HP_mean": "HP_mean.html", 
-      "Attack_mean": "Attack_mean.html", 
-      "Defense_mean": "Defense_mean.html", 
-      "Special_Attack_mean": "Special_Attack_mean.html", 
-      "Special_Defense_mean": "Special_Defense_mean.html", 
-      "Speed_mean": "Speed_mean.html", 
-      "Base_total_mean": "Base_total_mean.html"
+      "HP_mean": "assets/images/HP_mean.html", 
+      "Attack_mean": "assets/images/Attack_mean.html", 
+      "Defense_mean": "assets/images/Defense_mean.html", 
+      "Special_Attack_mean": "assets/images/Special_Attack_mean.html", 
+      "Special_Defense_mean": "assets/images/Special_Defense_mean.html", 
+      "Speed_mean": "assets/images/Speed_mean.html", 
+      "Base_total_mean": "assets/images/Base_total_mean.html"
     };
 
     var currentChart = null;
@@ -160,13 +160,12 @@ title: Map
       }
 
       currentChart = document.createElement("iframe");
-      currentChart.src = "assets/images/" + chartFiles[selectedChart];
+      currentChart.src = chartFiles[selectedChart];
       currentChart.style.width = "100%";
       currentChart.style.height = "600px";
 
       chartContainer.appendChild(currentChart);
     }
-  
   </script>
 </body>
 
