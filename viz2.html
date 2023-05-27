@@ -137,59 +137,53 @@ title: Map
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
-      var charts = {
-      "HP_mean.html": {}, 
-      "Attack_mean.html": {}, 
-      "Defense_mean.html": {}, 
-      "Special_Attack_mean.html": {}, 
-      "Special_Defense_mean.html": {}, 
-      "Speed_mean.html": {}, 
-      "Base_total_mean.html": {}
+      var charts = {};
+
+function changeChart() {
+  var select = document.getElementById("chartSelect");
+  var selectedChart = select.options[select.selectedIndex].value;
+
+  var chartContainer = document.getElementById("chartContainer");
+
+  // Hide previously shown chart
+  var previousChart = charts[selectedChart];
+  if (previousChart) {
+    previousChart.destroy();
+  }
+
+  // Show selected chart
+  Plotly.d3.csv("assets/images/" + selectedChart, function(data) {
+    var xData = [];
+    var yData = [];
+    for (var i = 0; i < data.length; i++) {
+      xData.push(data[i].generation);
+      yData.push(parseFloat(data[i].mean));
+    }
+
+    var trace = {
+      x: xData,
+      y: yData,
+      type: 'bar',
+      marker: {
+        color: 'rgb(0, 128, 0)'
+      }
     };
 
-    function changeChart() {
-      var select = document.getElementById("chartSelect");
-      var selectedChart = select.options[select.selectedIndex].value;
-
-      var chartContainer = document.getElementById("chartContainer");
-
-      // Hide previously shown chart
-      var previousChart = Object.values(charts).find(chart => chart.isVisible);
-      if (previousChart) {
-        Plotly.Plots.purge(previousChart);
-        previousChart.isVisible = false;
+    var layout = {
+      title: 'Mean ' + selectedChart.split('_')[0].toUpperCase() + ' by Generation',
+      xaxis: {
+        title: 'Generation'
+      },
+      yaxis: {
+        title: 'Mean ' + selectedChart.split('_')[0].toUpperCase()
       }
+    };
 
-      // Show selected chart
-      if (!charts[selectedChart].isVisible) {
-        Plotly.newPlot(chartContainer, [], {}, {displayModeBar: true}).then(function(chart) {
-          Plotly.d3.csv("assets/images/" + selectedChart, function(data) {
-            var xData = [];
-            var yData = [];
-            for (var i = 0; i < data.length; i++) {
-              xData.push(data[i].generation);
-              yData.push(parseFloat(data[i].mean));
-            }
-
-            var trace = {
-              x: xData,
-              y: yData,
-              type: 'bar',
-              marker: {
-                color: 'rgb(0, 128, 0)'
-              }
-            };
-
-            Plotly.addTraces(chartContainer, trace);
-          });
-
-          charts[selectedChart] = chart;
-          charts[selectedChart].isVisible = true;
-        });
-      } else {
-        charts[selectedChart].isVisible = false;
-      }
-    }
+    Plotly.newPlot(chartContainer, [trace], layout).then(function(chart) {
+      charts[selectedChart] = chart;
+    });
+  });
+}
   </script>
   </script>
 </body>
