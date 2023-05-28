@@ -10,35 +10,58 @@ title: Ranking
 <link rel="stylesheet" href="assets/tab1_network_site/lib/jquery.dataTables.min.css">
 
 <body>
-  <h1> Pokémon Type Effectiveness </h1>
-  <p>Every Pokémon has a primary type (type 1), and maybe a secondary type (type 2). Pokémon types include Fairy, Dark, Fighting, Bug, Grass, etc. 
+  <h1> All about Pokémon Types! </h1>
+  <h2> Pokémon by Primary Type </h2>
+  <p>
+    There are 18 types in Pokémon: Normal, Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, and Fairy. 
+    Every Pokémon has a primary type (type 1), and maybe a secondary type (type 2).
+    Which type is the most common? Which type is the rarest? Which type is the strongest? Which type is the weakest? 
+    Let's find out!
+  </p>
+  <p>
+    First, let's explore which Pokémon is of which primary type! 
+    Hover over the bubbles to see the count of each primary type and check out the corresponding Pokémon's general information. 
+    There's so many Pokémon of Type Water and Normal! Very few of Type Flying though.
+  </p>
+  <div class="flourish-embed flourish-hierarchy" data-src="visualisation/13929667"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+</body>
+
+
+
+<body>
+  <h2> Pokémon Type Effectiveness </h2>
+  <p> 
   How do we know which type is dominant over some other type?  Type A being dominant over Type B means Type A is very effective against Type B 
-  (i.e. Type B is not effective against Type A). Try clicking on the chords! For example, 'Fairy' to 'Dark' is 1.6 (very effective), and 'Dark' to 'Fairy' is 0.63 (not effective).
+  (i.e. Type B is not effective against Type A). Try clicking on the arcs and chords! For example, 'Fairy' to 'Dark' is 1.6 (very effective), and 'Dark' to 'Fairy' is 0.63 (not effective).
   </p>
   <div class="flourish-embed flourish-chord diagram" data-src="visualisation/13909447"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </body>
 
+
+
 <body>
-  <h1> Pokémon Capture Rate by Primary type and Generation </h1>
+  <h2> Pokémon Capture Rate by Primary type and Generation </h2>
   <p>Every Pokémon has a capture rate, which is a number between 0 and 255. The higher the number, the easier it is to catch the Pokémon.
   The capture rate is determined by the Pokémon's species, HP, status condition, Poké Ball used, and catch rate bonus. 
   </p>
   <p>Which primary type has higher capture rate? Which generation is easier to capture? What's the capture rate difference between legendary and non-legendary Pokémon?
   Some findings: Fairy type is the easiest to catch, dragon is the hardest. Legendary Pokémon are much harder to catch compared to non-legendary ones. 
-  Generation 7 has a lot of legendary Pokémons.
+  Generation 7 has a lot of legendary Pokémons. Hover over the bubbles to see each Pokémon's detailed infomation!
   </p>
   <div class="flourish-embed flourish-scatter" data-src="visualisation/13926994"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </body>
 
+
+
 <body>
-  <h1> Find the Best Type Pair! </h1>
-  <p> Given a primary type (type 1), which secondary type should I go with? Let's find the best type pair! For each primary type, 
+  <h2> Find the Best Type Pair! </h2>
+  <p> Given a primary type (type 1), which secondary type should I go with? Let's find the best type combination! For each primary type, 
     you can find the top 3 pairing for it in this diagram. Hover over the lines and you can see the type pair overall effectiveness value for each pair! 
-    (Note that the smaller the value the better here.)
+    Note that the smaller the value the better here. For instance, for primary type Bug, the best pairing is Bug_Steel, Bug_Electric, and Bug_Water. 
   <div class="flourish-embed flourish-sankey" data-src="visualisation/13921405"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </body>
 
 <body>
-  <h1> Pokémon Types vs. Attributes </h1>
+  <h2> Pokémon Types vs. Attributes </h2>
   <div class="flourish-embed" data-src="story/1932408"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </body>
