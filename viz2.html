@@ -255,7 +255,40 @@ function changeChart() {
 
 <body>
   <h1> OU radar chart</h1>
-  <iframe src="assets/images/radar_chart.html" width="800" height="600"></iframe>
+  <div id="radar-chart"></div>
+  <script src="assets/images/radar_chart.html"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      Plotly.d3.csv('path/to/pokemon_ou.csv', function (data) {
+        var layout = {
+          // 设置雷达图的布局
+          polar: {
+            radialaxis: {
+              visible: true,
+              range: [0, Math.max(data.HP) + 10] // 根据实际数据范围进行调整
+            }
+          },
+          showlegend: true
+        };
+  
+        // 创建雷达图
+        var fig = {
+          data: [{
+            type: 'scatterpolar',
+            r: data.HP,
+            theta: ['HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed', 'HP'],
+            fill: 'toself',
+            name: 'Pokemon'
+          }],
+          layout: layout
+        };
+  
+        // 将雷达图绘制到指定的 div 元素中
+        Plotly.newPlot('radar-chart', [fig]);
+      });
+    });
+  </script>
+  
 
 </body>
  <!--
