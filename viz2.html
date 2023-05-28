@@ -14,32 +14,7 @@ title: Map
 
 
 <div id="dialog" title="Nature Tutorial">
-<!--
-<b>The Pokemons' nature</b>
-    <p> In the battle, we definitely want to have Each Pokémon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible.
-    </p>
-        <b>Tiers</b>
-    <p>
-      We believe that a pokemon that is used more frequently is more useful. This usage rate is what the Tier stands for.
-      The Tier of pokemons consists of values: 'Uber', 'RU', 'OU', 'UUBL','UU','RUBL', 'RU', 'NUBL', 'NU','PUBL', 'PU' and 'LC'. 
-      Since 'Uber' represents the pokemons that are banned using and 'LC' represents the pokemons that are too weak to be taken into account 
-      when players are arranging their teams, we only use the left tiers. Therefore, the left ones are 'OU', 'UUBL','UU','RUBL', 'RU','NUBL', 'NU','PUBL' and'PU', 
-      where 'OU' represents the most frequently used ones and 'PU' the least. 
-      Then, it is common to believe the total of 6 basic natures reveals a pokemon's power. A higher of total number is, a stronger pokemon is revealed. 
-      Therefore, we want to visualize the relation between Tier and the total as follows. We can see it almost meets our expectations.
-    </p>
-    <b>The Tournaments</b>
-    <p>
-        The orange circle corresponds to the tournaments that host the ATP matches, the bigger its size, the more 
-        matches the tournaments hosted.
-     </p>
-    <p> The map is <i>interactive</i>! Hover over the players and the tournaments to discover additional information.
-        You can also zoom in to have a more precise look at some regions.
-    </p>
-</div>
 
-<br><br>
--->
 <script src="assets/tab1_network_site/lib/jquery.min.js"></script>
 <script src="assets/tab1_network_site/lib/jquery-3.6.0.js"></script>
 <script src="assets/tab1_network_site/lib/jquery-ui.js"></script>
@@ -50,19 +25,21 @@ title: Map
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
   <div id="text-container"></div>
-  <p> In the battle, we definitely want to have Each Pokémon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible.
+  <h1> Does the natures of pokemons decide their usage rate?</h1>
+  <p>   In the battle, we definitely want to have Each pokemon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible. In this part, we are more focused on the 
+    statistical distribution of natures of pokemons to see whether the pokemons' usage rate in pokemon battles is positively related to their natures.
 </p>
-    <b>Tiers</b>
+    <h1>Tiers</h1>
 <p>
-  We believe that a pokemon that is used more frequently is more useful. This usage rate is what the Tier stands for.
+      We believe that a pokemon that is used more frequently is more useful. This usage rate is what the Tier stands for.
   The Tier of pokemons consists of values: 'Uber', 'RU', 'OU', 'UUBL','UU','RUBL', 'RU', 'NUBL', 'NU','PUBL', 'PU' and 'LC'. 
   Since 'Uber' represents the pokemons that are banned using and 'LC' represents the pokemons that are too weak to be taken into account 
   when players are arranging their teams, we only use the left tiers. Therefore, the left ones are 'OU', 'UUBL','UU','RUBL', 'RU','NUBL', 'NU','PUBL' and'PU', 
   where 'OU' represents the most frequently used ones and 'PU' the least. 
   Then, it is common to believe the total of 6 basic natures reveals a pokemon's power. A higher of total number is, a stronger pokemon is revealed. 
-  Therefore, we want to visualize the relation between Tier and the total as follows. We can see it almost meets our expectations.
+  Therefore, we want to visualize the relation between Tier and the natures as follows. We can see it almost meets our expectations. For all 6 natures of pokemons, we can see that 
+  all pokemons in OU have higher amount of 6 natures.
 </p>
-<b>The Tournaments</b>
 
 </body>
 
@@ -92,7 +69,7 @@ title: Map
 </head>
 
 <body>
-  <h1>Pokemon 6 Natures Distribution</h1>
+  <h2>Pokemon 6 Natures Distribution</h2>
   <div class="six_natures">
     <div id="HP_chart_all" class="chart"></div>
     <div id="Attack_chart_all" class="chart"></div>
@@ -105,9 +82,9 @@ title: Map
   <br>
   <br>
   <p>
-    We can see that most pokemons' 6 natures's figures are centered in 0-90. In order to know why there aare some pokemons that are used most(i.e. Tier=OU), we need to have a look on their natures.
+    We can see that most pokemons' 6 natures's figures are centered in 0-90. We then illustrate the natures of OU pokemons.
   </p>
-  <h1>6 Natures Distribution for Tier OU</h1>
+  <h2>6 Natures Distribution for Tier OU</h2>
   <div class="six_natures">
     <div id="HP_chart" class="chart"></div>
     <div id="Attack_chart" class="chart"></div>
@@ -120,7 +97,17 @@ title: Map
   <br>
   <br>
   <br>
-  <h1> Generation Distribution </h1>
+  <p> In contrast, most pokemons with Tier OU have a figure of more than 90 in 6 natures.</p>
+  <br>
+  <br>
+  <br>
+  <h1> Does the later generaion have pokemons with higher natures? </h1>
+  <h2> Generation Distribution </h2>
+  <p>
+    Generally, a game series will introduce more powerful figures(or characters) when they promote a new generation in order that gamers want to follow the new generation. The later a pokemon is introduced, its possibility of being stronger is higher as well.
+    In order to see whether pokemon games also obey this routine, we will illustrate the changes of each generations. You can use buttion to see the changes in the mean value of each nature of pokemons as well as the base total of them.
+    (Base total = HP + Attack + Defense + Special Attack + Special Defense + Speed)
+  </p>
   <select id="chartSelect" onchange="changeChart()">
     <option value="assets/images/blank_plot.html"> - </option>
     <option value="assets/images/HP_mean.html">HP</option>
@@ -131,7 +118,6 @@ title: Map
     <option value="assets/images/Speed_mean.html">Speed</option>
     <option value="assets/images/Base_total_mean.html">Base Total</option>
   </select>
-  
 
   <div id="chartContainer_gen">
     <!-- Placeholder for chart -->
@@ -162,11 +148,22 @@ function changeChart() {
   currentChart = chartFrame;
 }
   </script>
+  <br>
+  <br>
+  <p>
+    We can see that despite the 4th generation has a specially high number in mean figures, the trends of pokemon games obey the mentioned routine.
+  </p>
 </body>
 
 
 
 <body>
-  <h1> OU radar chart</h1>
+  <h1> How to select the OU pokemons by their natures?</h1>
+  <p>
+    In pokemon battles, in order to win over other gamers, generally we will select pokemons with higher natures. Therefore, OU pokemon list is created. When making a team, we want to select a pokemon purposely, i.e. a pokemon with certain features
+    in natures distribution. For example, we want to select a pokemon with high attack and fast speed. Therefore, in order to visualize each pokemon's natures directly, we create the radar chart below
+    so that we can see whether a pokemon can meet our demand.
+  </p>
+  <h2> OU radar chart</h2>
   <iframe src="assets/images/radar_chart.html" width="100%" height="500px" frameborder="0"></iframe>
 </body>
