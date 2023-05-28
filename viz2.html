@@ -164,6 +164,100 @@ function changeChart() {
   </script>
 </body>
 
+
+<body>
+  <h1>Radar Chart</h1>
+  <input type="file" id="csv-file-input" accept=".csv">
+  <div id="radar-chart-container"></div>
+
+  <script>
+      // 读取 CSV 文件并提取数据
+      function handleFileSelect(event) {
+          const file = event.target.files[0];
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+              const contents = e.target.result;
+              const pokemonData = parseCSV(contents);
+
+              // 调用函数生成雷达图
+              generateRadarChart(pokemonData);
+          };
+
+          reader.readAsText(file);
+      }
+
+      // 解析 CSV 数据
+      function parseCSV(contents) {
+          const lines = contents.split('\n');
+          const headers = lines[0].split(',');
+
+          const pokemonData = [];
+
+          for (let i = 1; i < lines.length; i++) {
+              const values = lines[i].split(',');
+
+              if (values.length === headers.length) {
+                  const pokemon = {};
+
+                  for (let j = 0; j < headers.length; j++) {
+                      pokemon[headers[j]] = values[j];
+                  }
+
+                  pokemonData.push(pokemon);
+              }
+          }
+
+          return pokemonData;
+      }
+
+      // 生成雷达图
+      function generateRadarChart(data) {
+          const radarData = [
+              {
+                  type: 'scatterpolar',
+                  r: [],
+                  theta: ['HP', 'Attack', 'Defense', 'Special_Attack', 'Special_Defense', 'Speed'],
+                  fill: 'toself',
+                  name: 'Pokemon',
+              },
+          ];
+
+          const layout = {
+              polar: {
+                  radialaxis: {
+                      visible: true,
+                      range: [0, 150],  // 根据实际数据范围进行调整
+                  },
+              },
+              showlegend: true,
+          };
+
+          const chartContainer = document.getElementById('radar-chart-container');
+          Plotly.newPlot(chartContainer, radarData, layout);
+
+          chartContainer.on('plotly_click', function(eventData) {
+              // 获取选中的宝可梦索引
+              const selectedPokemonIndices = eventData.points.map(point => point.pointIndex);
+
+              // 更新雷达图数据
+              radarData[0].r = selectedPokemonIndices.map(index => Object.values(data[index]).slice(1));
+
+              // 重新渲染雷达图
+              Plotly.react(chartContainer, radarData, layout);
+          });
+      }
+
+      // 监听文件选择事件
+      document.getElementById('csv-file-input').addEventListener('change', handleFileSelect, false);
+  </script>
+</body>
+
+<body>
+  <h1> OU radar chart</h1>
+  <iframe src="assets/images/radar_chart.html" width="800" height="600"></iframe>
+
+</body>
  <!--
 <script type="module">
     // Load the Observable runtime and inspector.
