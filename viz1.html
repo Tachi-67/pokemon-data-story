@@ -136,6 +136,9 @@ title: Abilities
 <script>
   var slider = document.getElementById("myRange");
   var output = document.getElementById("sliderValue");
+  var barChart = document.getElementById("bar-chart");
+  var isSliderAnimated = false; // Add a flag to track if the slider has been animated
+
   
   d3.csv('assets/tab1_ability/data/ability_description.csv', function(error, descriptionData) {
     if (error) throw error;
@@ -161,27 +164,34 @@ title: Abilities
         updateBarChart(data, descriptionData, this.value);
       }
 
-       // Slider animation code
- // Slider animation code
- var maxVal = data.length;
- var duration = 3000;  // Duration for the animation
- var start = null;
+      window.onscroll = function() {
+        var rect = barChart.getBoundingClientRect();
+        if(rect.top < window.innerHeight && !isSliderAnimated) {
+          animateSlider();
+          isSliderAnimated = true;
+        }
+      };
 
- function step(timestamp) {
-   if (!start) start = timestamp;
-   var progress = timestamp - start;
-   var fraction = Math.min(progress / duration, 1);
-   var easedFraction = Math.pow(fraction, 0.5); // Change this function for different easing effects
-   slider.value = Math.floor(easedFraction * maxVal) + 1;
-   output.innerHTML = slider.value;
-   updateBarChart(data, descriptionData, slider.value);
-   if (progress < duration) {
-     window.requestAnimationFrame(step);
-   }
- }
-
- window.requestAnimationFrame(step);
-
+      function animateSlider() {
+        var maxVal = slider.max;
+        var duration = 3000;  // Duration for the animation
+        var start = null;
+    
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          var progress = timestamp - start;
+          var fraction = Math.min(progress / duration, 1);
+          var easedFraction = Math.pow(fraction, 0.5); // Change this function for different easing effects
+          slider.value = Math.floor(easedFraction * maxVal) + 1;
+          output.innerHTML = slider.value;
+          updateBarChart(data, descriptionData, slider.value);
+          if (progress < duration) {
+            window.requestAnimationFrame(step);
+          }
+        }
+        
+        window.requestAnimationFrame(step);
+      }
 
 
     });
