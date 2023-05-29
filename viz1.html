@@ -38,22 +38,25 @@ title: Abilities
     <p>
       <b style="color: #E76F51;">Information</b>
       <ul>
-        <li>Every pokemon has a `Tier` attribute, among them, the `OU` rank signals the strongest pokemons.</li>
-        <li>Here we sort the top abilities by their occurrence in the `OU` pokemons.</li> 
+        <li>Every pokemon has a "Tier" attribute, among them, the "OU" rank signals the strongest pokemons.</li>
+        <li>Here we sort the top abilities by their occurrence in the "OU" pokemons.</li> 
       </ul>    
     </p>
     
     <p>
       <b style="color: #E76F51;">Selection</b>
       <ul>
+        <li>Hover on each bar to view the ability name and occurrence count.</li>
         <li>Click on each bar to view detailed information about the ability.</li>
+        <li>Toggle the slider to show the top abilities.</li>
       </ul>
     </p>
     
     <p>
       <b style="color: #E76F51;">Graph</b>
       <ul>
-        <li>A bar chart showing the occurrence of an ability among the `OU` pokemons.</li>
+        <li>A bar chart showing the occurrence of an ability among the "OU" pokemons.</li>
+        <li>Number of abilities shown is adjustable.</li>
       </ul>
     </p>
     
@@ -67,7 +70,7 @@ title: Abilities
 
 <div class="container">
 
-  <input type="range" min="1" id="myRange" class="slider">
+  <input type="range" min="1" id="myRange" class="slider" value="1">
   <p>Number of Abilities Displayed: <span id="sliderValue"></span></p>
 
 
@@ -219,16 +222,20 @@ title: Abilities
               .style("opacity", 0);
       });
   }
+</script>
 
+<script>
   $(document).ready(function() {
     var slider = document.getElementById('myRange');
     var maxVal = slider.max;
     var duration = 3000;  // Duration for the animation
     var stepTime = duration / maxVal;
     var sliderVal = slider.min;
-
+  
     var sliderAnimation = setInterval(function() {
       slider.value = sliderVal;
+      output.innerHTML = sliderVal;
+      updateBarChart(data, descriptionData, sliderVal);
       sliderVal++;
       if (sliderVal > maxVal) {
         clearInterval(sliderAnimation);
