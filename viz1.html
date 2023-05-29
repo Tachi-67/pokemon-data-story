@@ -72,7 +72,13 @@ title: Abilities
     });
   } );
   
-  d3.csv('tab1_ability/data/top10_abilities.csv').then(data => {
+  d3.csv('top10_abilities.csv', function(error, data) {
+    if (error) throw error;
+
+    data.forEach(function(d) {
+      d.Count = +d.Count;
+    });
+
     let margin = {top: 20, right: 20, bottom: 70, left: 40},
         width = 600 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
