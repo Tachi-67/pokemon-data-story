@@ -150,7 +150,7 @@ title: Abilities
 
           d3.select('#bar-info')
               .html(`
-                <img src="assets/tab1_ability/img/${d.Ability}.png" style="display: inline-block;">
+                <img src="assets/tab1_ability/img/${d.Ability}.jfif" style="display: inline-block;">
                 <p style="display: inline-block;">${abilityDescription}</p>
               `);
         })
@@ -166,9 +166,8 @@ title: Abilities
           d3.select("#tooltip")
               .style("opacity", 0);
       });
-        // ... 你的其他代码 ...
-  });  // 这个是结束 d3.csv('tab1_ability/data/top10_abilities.csv' 的括号
-});  // 这个是结束 d3.csv('assets/tab1_ability/data/ability_description.csv' 的括号
+  }); 
+}); 
 </script>
 
 
