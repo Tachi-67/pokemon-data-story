@@ -1,11 +1,12 @@
 Ability,description
-Telepathy,hahaha
-Regenerator,regen
-Beast Boost,3
-Levitate,2
-Keen Eye,2
-Sturdy,2
-Limber,2
-Mold Breaker,2
-Battle Bond,2
-Serene Grace,2
+Telepathy,"This Pokemon does not take damage from attacks made by its allies."
+Regenerator,"This Pokemon restores 1/3 of its maximum HP, rounded down, when it switches out."
+Beast Boost,"This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order."
+Levitate,"This Pokemon is immune to Ground-type attacks and the effects of Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability. The effects of Gravity, Ingrain, Smack Down, Thousand Arrows, and Iron Ball nullify the immunity. Thousand Arrows can hit this Pokemon as if it did not have this Ability."
+Keen Eye,"Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage."
+Sturdy,"If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon.
+"
+Limber,"This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it."
+Mold Breaker,"This Pokemon's moves and their effects ignore certain Abilities of other Pokemon."
+Battle Bond,"If this Pokemon is a Greninja, its Attack, Special Attack, and Speed are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle."
+Serene Grace,"This Pokemon's moves have their secondary effect chance doubled. This effect stacks with the Rainbow effect, except for secondary effects that cause the target to flinch."
