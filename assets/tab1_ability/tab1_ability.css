@@ -98,33 +98,31 @@
   cursor: pointer;
 }
 
+.bar {
+  fill: #E9C46A;
+  stroke: #E76F51;
+  stroke-width: 2px;
+}
+
 .slider {
-  -webkit-appearance: none !important;
-  height: 300px;  /* Match the height with your chart */
-  width: 2px;  /* Thin slider */
-  background: #2A9D8F;  /* Slider color */
+  height: 300px;  /* 设置和barplot高度一致 */
+  display: flex;
+  align-items: center;
+}
+
+.slider .slider {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 8px;
+  height: 100%;
+  padding: 0;
+  background: #E9C46A;
   outline: none;
-  -webkit-transform: rotateZ(-270deg);  /* Rotate slider */
-  transform: rotateZ(-270deg);  /* Rotate slider */
-  position: absolute;  /* Positioning slider */
-  right: 50px;  /* Adjust according to your needs */
-  top: 50%;  /* Adjust according to your needs */
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;  /* Slider handle width */
-  height: 25px;  /* Slider handle height */
-  background: #2A9D8F;  /* Slider handle color */
-  cursor: pointer;  /* Cursor on hover */
-  border-radius: 50%;  /* Circular slider handle */
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;  /* Slider handle width */
-  height: 25px;  /* Slider handle height */
-  background: #2A9D8F;  /* Slider handle color */
-  cursor: pointer;  /* Cursor on hover */
-  border-radius: 50%;  /* Circular slider handle */
+.slider .slider:hover {
+  opacity: 1;
 }
