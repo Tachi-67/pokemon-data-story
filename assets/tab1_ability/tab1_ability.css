@@ -138,3 +138,8 @@
   cursor: pointer; /* Cursor on hover */
 }
 
+.slider-container {
+  margin-left: 64px; /* Adjust this value as needed */
+}
+
+
