@@ -23,7 +23,7 @@ title: Abilities
 
 <script>
   // Fetch the JSON data and parse it
-  fetch('3dplot.json').then(response => response.json())
+  fetch('assets/tab1_ability/data/3dplot.json').then(response => response.json())
   .then(data => {
       // Use Plotly.js to create the graph
       Plotly.newPlot('3d_abi', data.data, data.layout);
