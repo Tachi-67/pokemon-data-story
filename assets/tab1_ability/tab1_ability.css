@@ -103,4 +103,8 @@
   stroke: #E76F51;
   stroke-width: 2px;
 }
-
+#bar-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
