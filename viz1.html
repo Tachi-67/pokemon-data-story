@@ -15,12 +15,15 @@ title: Abilities
   <div class="col-md-10">
     <h1 style="margin:64px">Ability?</h1>  
   </div>
+  <div class="col-md-2">
+    <button id="opener2" style="display: inline; margin:64px">Tutorial</button>
+  </div>
   <div id="3d_abi"></div>
 </div>
 
 
 
-
+<-- the plotly 3d plot -->
 <script>
   // Fetch the JSON data and parse it
   fetch('assets/tab1_ability/data/3dplot.json').then(response => response.json())
@@ -32,7 +35,6 @@ title: Abilities
 
 
 <div class="container">
-
   <div class="flourish-embed" data-src="visualisation/13939565"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </div>
 
@@ -49,9 +51,60 @@ title: Abilities
   </div>
 </div>
 
+
+
+<-- Tutorial 1 -->
+
+<div id="dialog2" title="Graph tutorial"  class="modal" style="display:none;">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <p>
+      <b style="color: #E76F51;">Graph</b>
+      <ul>
+        <li><b>The 3D plot:</b> Different pokemons with different abilities.</li>
+        <li><b>The word cloud:</b> Abilities, size by their occurence among all pokemons.</li>
+      </ul>
+    </p>
+
+    <p>
+      <b style="color: #E76F51;">Information</b>
+      <ul>
+        <li>Each pokemon takes 1 to 3 abilities.</li>
+        <li>There are many abilities, they take different occurence rates among pokemons.</li> 
+      </ul>    
+    </p>
+    
+    <p>
+      <b style="color: #E76F51;">Interaction</b>
+      <ul>
+        <li><b>The 3D plot:</b> Hover on each point for detailed ability information for each pokemon.</li>
+        <li>Click on dots on the right to filter pokemons by the abilies they have.</li>
+        <li><b>The word cloud:</b> Hover on each word for ability counts.</li>
+      </ul>
+    </p>
+    
+   
+    
+    </div>
+</div>
+
+
+
+
+<-- Tutorial 2 -->
+
 <div id="dialog" title="Graph tutorial"  class="modal" style="display:none;">
     <div class="modal-content">
     <span class="close">&times;</span>
+
+    <p>
+      <b style="color: #E76F51;">Graph</b>
+      <ul>
+        <li>A bar chart showing the occurrence of an ability among the "OU" pokemons.</li>
+        <li>Number of abilities shown is adjustable.</li>
+      </ul>
+    </p>
     <p>
       <b style="color: #E76F51;">Information</b>
       <ul>
@@ -69,18 +122,9 @@ title: Abilities
       </ul>
     </p>
     
-    <p>
-      <b style="color: #E76F51;">Graph</b>
-      <ul>
-        <li>A bar chart showing the occurrence of an ability among the "OU" pokemons.</li>
-        <li>Number of abilities shown is adjustable.</li>
-      </ul>
-    </p>
     
-
-
-</div>
-
+    
+    </div>
 </div>
 
 
@@ -109,7 +153,7 @@ title: Abilities
 <script src="assets/tab1_ability/lib/jquery-ui.js"></script>
 
 
-
+<-- js for the second tutorial button -->
 <script>
   var modal = document.getElementById("dialog");
 
@@ -129,10 +173,31 @@ title: Abilities
   
 </script>
 
+<-- The first tutorial button, we have to put it after the second tutorial js -->
+<script>
+  var modal2 = document.getElementById("dialog2");
 
-
-
+  document.getElementById("opener2").addEventListener("click", function() {
+      modal2.style.display = "block";
+  });
   
+  document.getElementsByClassName("close")[1].addEventListener("click", function() {
+      modal2.style.display = "none";
+  });
+  
+  window.addEventListener("click", function(event) {
+      if (event.target == modal2) {
+          modal2.style.display = "none";
+      }
+  });
+  
+</script>
+
+
+
+
+
+<-- The barpllot and the slider -->  
 <script>
   var slider = document.getElementById("myRange");
   var output = document.getElementById("sliderValue");
