@@ -20,25 +20,29 @@ title: Abilities
 <div id="dialog" title="Graph tutorial"  class="modal" style="display:none;">
     <div class="modal-content">
     <span class="close">&times;</span>
+    <p>
+      <b>Information</b>
+      <ul>
+        <li>Every pokemon has a `Tier` attribute, among them, the `OU` rank signals the strongest pokemons.</li>
+        <li>Here we sort the top 10 abilities by their occurrence in the `OU` pokemons.</li> 
+      </ul>    
+    </p>
+
+    <p>
+      <b>Selection</b>
+      <ul>
+        <li>Click on each bar to view detailed information about the ability.</li>
+      </ul>
+    </p>
+
   <p>
     <b>Graph</b>
     <ul>
       <li>A bar chart showing the occurrence of an ability among the `OU` pokemons.</li>
     </ul>
   </p>
-  <p>
-    <b>Selection</b>
-    <ul>
-      <li>Click on each bar to view detailed information about the ability.</li>
-    </ul>
-  </p>
-  <p>
-    <b>Information</b>
-    <ul>
-      <li>Every pokemon has a `Tier` attribute, among them, the `OU` rank signals the strongest pokemons.</li>
-      <li>Here we sort the top 10 abilities by their occurrence in the `OU` pokemons.</li> 
-    </ul>    
-  </p>
+
+
 </div>
 
 </div>
@@ -49,7 +53,10 @@ title: Abilities
   
   <div id="bar-info" style="margin-top: 20px;"></div>
   
+  <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none; background-color: #2A9D8F; color: white; padding: 5px; border-radius: 5px;"></div>
+
 </div>
+
 
 
 <script src="assets/tab1_ability/lib/d3.v4.min.js"></script>
@@ -104,7 +111,10 @@ title: Abilities
 
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+      .selectAll("text")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end");
 
     svg.append("g")
         .call(d3.axisLeft(y));
@@ -117,8 +127,24 @@ title: Abilities
         .attr("width", x.bandwidth())
         .attr("y", d => y(d.Count))
         .attr("height", d => height - y(d.Count))
+        .attr("fill", "#2A9D8F")
         .on('click', function(d, i) {
             d3.select('#bar-info').html(`<p>You clicked on ability ${d.Ability} with count ${d.Count}</p>`);
+        })
+        .on("mouseover", function(d) {
+            let html = `Ability: ${d.Ability}<br/>Count: ${d.Count}`;
+            let xPosition = d3.mouse(this)[0] - 15;
+            let yPosition = d3.mouse(this)[1] - 55;
+
+            d3.select("#tooltip")
+                .style("left", xPosition + "px")
+                .style("top", yPosition + "px")
+                .html(html)
+                .style("opacity", 1);
+        })
+        .on("mouseout", function(d) {
+            d3.select("#tooltip")
+                .style("opacity", 0);
         });
   });
 </script>
