@@ -109,38 +109,6 @@
   align-items: center;
 }
 
-/* CSS file */
-.slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
-  appearance: none;
-  width: 25%; /* Full-width */
-  height: 15px; /* Specified height */
-  background: #2A9D8F; 
-  outline: none; /* Remove outline */
-  opacity: 1; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; 
-  appearance: none;
-  width: 25px;
-  height: 25px; 
-  background: #264653; 
-  border-radius: 50%;  /* Makes the slider thumb circular */
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #264653;
-  border-radius: 50%;  /* Makes the slider thumb circular */
-  cursor: pointer;
-}
-
-
 .slider-container {
   margin-left: 64px; /* Adjust this value as needed */
 }
