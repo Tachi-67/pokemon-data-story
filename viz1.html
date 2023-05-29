@@ -17,7 +17,7 @@ title: Abilities
   </div>
 </div>
 
-<div id="dialog" title="Graph tutorial" class="container" style="display:none;">
+<div id="dialog" title="Graph tutorial"  class="modal" style="display:none;">
   <p>
     <b>Graph</b>
     <ul>
@@ -64,7 +64,8 @@ title: Abilities
     } else {
         dialog.style.display = "none";
     }
-  });
+});
+
   
   d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
     if (error) throw error;
