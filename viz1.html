@@ -52,28 +52,10 @@ title: Abilities
 <script src="assets/tab1_ability/lib/jquery.min.js"></script>
 <script src="assets/tab1_ability/lib/jquery-ui.js"></script>
 
-<script>
-  $( function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 100
-      },
-      hide: {
-        effect: "blind",
-        duration: 100
-      },
-      width: 1000
-    });
- 
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  } );
-</script>
+
 
 <script>
+   
   
   d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
     if (error) throw error;
@@ -118,6 +100,27 @@ title: Abilities
             d3.select('#bar-info').html(`<p>You clicked on ability ${d.Ability} with count ${d.Count}</p>`);
         });
   });
+</script>
+
+<script>
+  $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 100
+      },
+      hide: {
+        effect: "blind",
+        duration: 100
+      },
+      width: 1000
+    });
+ 
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
 </script>
 
 
