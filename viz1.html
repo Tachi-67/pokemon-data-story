@@ -143,20 +143,25 @@ title: Abilities
       }
 
        // Slider animation code
-    var maxVal = data.length;
-    var duration = 3000;  // Duration for the animation
-    var stepTime = duration / maxVal;
-    var sliderVal = 1;  // Initial slider value
+ // Slider animation code
+ var maxVal = data.length;
+ var duration = 3000;  // Duration for the animation
+ var start = null;
 
-    var sliderAnimation = setInterval(function() {
-      slider.value = sliderVal;
-      output.innerHTML = sliderVal;
-      updateBarChart(data, descriptionData, sliderVal);
-      sliderVal++;
-      if (sliderVal > maxVal) {
-        clearInterval(sliderAnimation);
-      }
-    }, stepTime);
+ function step(timestamp) {
+   if (!start) start = timestamp;
+   var progress = timestamp - start;
+   var fraction = Math.min(progress / duration, 1);
+   var easedFraction = Math.pow(fraction, 0.5); // Change this function for different easing effects
+   slider.value = Math.floor(easedFraction * maxVal) + 1;
+   output.innerHTML = slider.value;
+   updateBarChart(data, descriptionData, slider.value);
+   if (progress < duration) {
+     window.requestAnimationFrame(step);
+   }
+ }
+
+ window.requestAnimationFrame(step);
 
 
 
