@@ -89,12 +89,12 @@ title: Abilities
   d3.csv('assets/tab1_ability/data/ability_description.csv', function(error, descriptionData) {
     if (error) throw error;
 
-  d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
-    if (error) throw error;
+    d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
+      if (error) throw error;
 
-    data.forEach(function(d) {
-      d.Count = +d.Count;
-    });
+      data.forEach(function(d) {
+        d.Count = +d.Count;
+      });
 
     let margin = {top: 20, right: 20, bottom: 70, left: 40},
         width = 600 - margin.left - margin.right,
@@ -141,6 +141,8 @@ title: Abilities
         .attr("y", d => y(d.Count))
         .attr("height", d => height - y(d.Count))
         .attr("fill", "#2A9D8F")
+
+
         .on('click', function(d, i) {
           // 找到对应的描述
           let matchedDescription = descriptionData.find(desc => desc.Ability === d.Ability);
@@ -148,23 +150,25 @@ title: Abilities
 
           d3.select('#bar-info')
               .html(`
-                <img src="assets/tab1_ability/img/${d.Ability}.jfif" style="display: inline-block;">
+                <img src="assets/tab1_ability/img/${d.Ability}.png" style="display: inline-block;">
                 <p style="display: inline-block;">${abilityDescription}</p>
               `);
         })
         .on("mouseover", function(d) {
-            let html = `Ability: ${d.Ability}<br/>Count: ${d.Count}`;
-            d3.select("#tooltip")
-                .style("opacity", 1)
-                .html(html)
-                .style('left', (event.pageX + 10) + 'px') 
-                .style('top', (event.pageY + 10) + 'px');
-        })
-        .on("mouseout", function(d) {
-            d3.select("#tooltip")
-                .style("opacity", 0);
-        });
-  });
+          let html = `Ability: ${d.Ability}<br/>Count: ${d.Count}`;
+          d3.select("#tooltip")
+              .style("opacity", 1)
+              .html(html)
+              .style('left', (event.pageX + 10) + 'px') 
+              .style('top', (event.pageY + 10) + 'px');
+      })
+      .on("mouseout", function(d) {
+          d3.select("#tooltip")
+              .style("opacity", 0);
+      });
+        // ... 你的其他代码 ...
+  });  // 这个是结束 d3.csv('tab1_ability/data/top10_abilities.csv' 的括号
+});  // 这个是结束 d3.csv('assets/tab1_ability/data/ability_description.csv' 的括号
 </script>
 
 
