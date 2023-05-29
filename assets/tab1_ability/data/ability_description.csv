@@ -1,12 +1,60 @@
 Ability,description
-Telepathy,"This Pokemon does not take damage from attacks made by its allies."
+Telepathy,This Pokemon does not take damage from attacks made by its allies.
 Regenerator,"This Pokemon restores 1/3 of its maximum HP, rounded down, when it switches out."
 Beast Boost,"This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order."
 Levitate,"This Pokemon is immune to Ground-type attacks and the effects of Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability. The effects of Gravity, Ingrain, Smack Down, Thousand Arrows, and Iron Ball nullify the immunity. Thousand Arrows can hit this Pokemon as if it did not have this Ability."
-Keen Eye,"Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage."
-Sturdy,"If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon.
-"
-Limber,"This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it."
-Mold Breaker,"This Pokemon's moves and their effects ignore certain Abilities of other Pokemon."
+Keen Eye,Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage.
+Sturdy,"If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon."
+Limber,This Pokemon cannot be paralyzed. Gaining this Ability while paralyzed cures it.
+Mold Breaker,This Pokemon's moves and their effects ignore certain Abilities of other Pokemon.
 Battle Bond,"If this Pokemon is a Greninja, its Attack, Special Attack, and Speed are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle."
 Serene Grace,"This Pokemon's moves have their secondary effect chance doubled. This effect stacks with the Rainbow effect, except for secondary effects that cause the target to flinch."
+Pressure,"If this Pokemon is the target of an opposing Pokemon's move, that move loses one additional PP. Imprison, Snatch, and Tera Blast also lose one additional PP when used by an opposing Pokemon, but Sticky Web does not."
+Disguise,"If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, and it loses 1/8 of its max HP. Confusion damage also breaks the disguise."
+Leaf Guard,"If Sunny Day is active, this Pokemon cannot become affected by a non-volatile status condition or Yawn, and Rest will fail for it. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+Synchronize,"If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+Rain Dish,"If Rain Dance is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+Weak Armor,"If a physical attack hits this Pokemon, its Defense is lowered by 1 stage and its Speed is raised by 2 stages."
+Thick Fat,"If a Pokemon uses a Fire- or Ice-type attack against this Pokemon, that Pokemon's offensive stat is halved when calculating the damage to this Pokemon."
+Snow Cloak,"If Snow is active, the accuracy of moves used against this Pokemon is multiplied by 0.8."
+Chlorophyll,"If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+Drizzle,"On switch-in, this Pokemon summons Rain Dance."
+Misty Surge,"On switch-in, this Pokemon summons Misty Terrain."
+Grassy Surge,"On switch-in, this Pokemon summons Grassy Terrain."
+Electric Surge,"On switch-in, this Pokemon summons Electric Terrain."
+Psychic Surge,"On switch-in, this Pokemon summons Psychic Terrain."
+Merciless,This Pokemon's attacks are critical hits if the target is poisoned.
+Sand Stream,"On switch-in, this Pokemon summons Sandstorm."
+Unnerve,"While this Pokemon is active, it prevents opposing Pokemon from using their Berries. This Ability activates before hazards and other Abilities take effect."
+Victory Star,This Pokemon and its allies' moves have their accuracy multiplied by 1.1.
+Flame Body,30% chance a Pokemon making contact with this Pokemon will be burned.
+Swarm,"When this Pokemon has 1/3 or less of its maximum HP, rounded down, its offensive stat is multiplied by 1.5 while using a Bug-type attack."
+Static,30% chance a Pokemon making contact with this Pokemon will be paralyzed.
+Aura Break,"While this Pokemon is active, the effects of the Dark Aura and Fairy Aura Abilities are reversed, multiplying the power of Dark- and Fairy-type moves, respectively, by 3/4 instead of 1.33."
+Oblivious,This Pokemon cannot be infatuated or taunted. Gaining this Ability while infatuated or taunted cures it. This Pokemon is immune to the effect of the Intimidate Ability.
+Effect Spore,"30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep."
+Magnet Pull,"Prevents opposing Steel-type Pokemon from choosing to switch out, unless they are holding a Shed Shell or are a Ghost type."
+Iron Barbs,"Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down."
+Defiant,This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon.
+Inner Focus,This Pokemon cannot be made to flinch. This Pokemon is immune to the effect of the Intimidate Ability.
+Healer,30% chance this Pokemon's ally has its non-volatile status condition cured at the end of each turn.
+Natural Cure,This Pokemon has its non-volatile status condition cured when it switches out.
+Cute Charm,There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender.
+Magic Guard,"This Pokemon can only be damaged by direct attacks. Curse and Substitute on use, Belly Drum, Pain Split, Struggle recoil, and confusion damage are considered direct damage."
+Unaware,"This Pokemon ignores other Pokemon's Attack, Special Attack, and accuracy stat stages when taking damage, and ignores other Pokemon's Defense, Special Defense, and evasiveness stat stages when dealing damage."
+Sand Force,"If Sandstorm is active, this Pokemon's Ground-, Rock-, and Steel-type attacks have their power multiplied by 1.3. This Pokemon takes no damage from Sandstorm."
+Sand Rush,"If Sandstorm is active, this Pokemon's Speed is doubled. This Pokemon takes no damage from Sandstorm."
+Anticipation,"On switch-in, this Pokemon is alerted if any opposing Pokemon has an attack that is super effective against this Pokemon, or an OHKO move. "
+Rough Skin,"Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down."
+Analytic,The power of this Pokemon's move is multiplied by 1.3 if it is the last to move in a turn.
+Sand Veil,"If Sandstorm is active, the accuracy of moves used against this Pokemon is multiplied by 0.8. This Pokemon takes no damage from Sandstorm."
+Protean,"This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized."
+Torrent,"When this Pokemon has 1/3 or less of its maximum HP, rounded down, its offensive stat is multiplied by 1.5 while using a Water-type attack."
+Unburden,"If this Pokemon loses its held item for any reason, its Speed is doubled as long as it remains active, has this Ability, and is not holding an item."
+Flash Fire,"This Pokemon is immune to Fire-type moves. The first time it is hit by a Fire-type move, its offensive stat is multiplied by 1.5 while using a Fire-type attack as long as it remains active and has this Ability. If this Pokemon is frozen, it cannot be defrosted by Fire-type attacks."
+Magician,"If this Pokemon has no item, it steals the item off a Pokemon it hits with an attack. Does not affect Doom Desire and Future Sight."
+Justified,This Pokemon's Attack is raised by 1 stage after it is damaged by a Dark-type move.
+Teravolt,This Pokemon's moves and their effects ignore certain Abilities of other Pokemon.
+Intimidate,"On switch-in, this Pokemon lowers the Attack of opposing Pokemon by 1 stage. Pokemon with the Inner Focus, Oblivious, Own Tempo, or Scrappy Abilities and Pokemon behind a substitute are immune."
+Soul-Heart,This Pokemon's Special Attack is raised by 1 stage when another Pokemon faints.
+Power Construct,"If this Pokemon is a Zygarde in its 10% or 50% Forme, it changes to Complete Forme when it has 1/2 or less of its maximum HP at the end of the turn."
