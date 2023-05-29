@@ -131,7 +131,7 @@ title: Abilities
 
       // Update the slider max value based on the data length
       slider.max = data.length;
-      slider.value = data.length;
+      slider.value = 1;
       output.innerHTML = slider.value;  // Display the default slider value
 
       // Update the chart initially
@@ -142,6 +142,25 @@ title: Abilities
         output.innerHTML = this.value;
         updateBarChart(data, descriptionData, this.value);
       }
+
+       // Slider animation code
+    var maxVal = data.length;
+    var duration = 3000;  // Duration for the animation
+    var stepTime = duration / maxVal;
+    var sliderVal = 1;  // Initial slider value
+
+    var sliderAnimation = setInterval(function() {
+      slider.value = sliderVal;
+      output.innerHTML = sliderVal;
+      updateBarChart(data, descriptionData, sliderVal);
+      sliderVal++;
+      if (sliderVal > maxVal) {
+        clearInterval(sliderAnimation);
+      }
+    }, stepTime);
+
+
+
     });
   });
 
@@ -224,23 +243,4 @@ title: Abilities
   }
 </script>
 
-<script>
-  $(document).ready(function() {
-    var slider = document.getElementById('myRange');
-    var maxVal = slider.max;
-    var duration = 3000;  // Duration for the animation
-    var stepTime = duration / maxVal;
-    var sliderVal = slider.min;
-  
-    var sliderAnimation = setInterval(function() {
-      slider.value = sliderVal;
-      output.innerHTML = sliderVal;
-      updateBarChart(data, descriptionData, sliderVal);
-      sliderVal++;
-      if (sliderVal > maxVal) {
-        clearInterval(sliderAnimation);
-      }
-    }, stepTime);
-  });
-</script>
 
