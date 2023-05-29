@@ -103,24 +103,25 @@ title: Abilities
 </script>
 
 <script>
-  $( function() {
+  $(document).ready(function() {
     $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 100
-      },
-      hide: {
-        effect: "blind",
-        duration: 100
-      },
-      width: 1000
+        autoOpen: false,
+        show: {
+            effect: "blind",
+            duration: 100
+        },
+        hide: {
+            effect: "blind",
+            duration: 100
+        },
+        width: 1000
     });
  
     $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
+        $( "#dialog" ).dialog( "open" );
     });
-  } );
+});
+
 </script>
 
 
