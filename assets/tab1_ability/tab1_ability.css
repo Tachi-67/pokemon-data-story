@@ -104,25 +104,3 @@
   stroke-width: 2px;
 }
 
-.slider {
-  height: 300px;  /* 设置和barplot高度一致 */
-  display: flex;
-  align-items: center;
-}
-
-.slider .slider {
-  writing-mode: bt-lr; /* IE */
-  -webkit-appearance: slider-vertical; /* WebKit */
-  width: 8px;
-  height: 100%;
-  padding: 0;
-  background: #E9C46A;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider .slider:hover {
-  opacity: 1;
-}
