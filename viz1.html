@@ -15,10 +15,9 @@ title: Abilities
   <div class="col-md-2">
     <button id="opener" style="display: inline; margin:64px">Tutorial</button>
   </div>
-
 </div>
 
-<div id="dialog" title="Graph tutorial" class="container">
+<div id="dialog" title="Graph tutorial" class="container" style="display:none;">
   <p>
     <b>Information</b>
     <ul>
@@ -54,24 +53,14 @@ title: Abilities
 <script src="assets/tab1_ability/lib/jquery-ui.js"></script>
 
 <script>
-  $( function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 100
-      },
-      hide: {
-        effect: "blind",
-        duration: 100
-      },
-      width: 1000
-    });
- 
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  } );
+  document.getElementById("opener").addEventListener("click", function() {
+    var dialog = document.getElementById("dialog");
+    if (dialog.style.display === "none") {
+        dialog.style.display = "block";
+    } else {
+        dialog.style.display = "none";
+    }
+  });
   
   d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
     if (error) throw error;
