@@ -6,7 +6,7 @@ title: Abilities
 <link rel="stylesheet" href="assets/tab1_ability/tab1_ability.css"/>
 <link rel="stylesheet" href="assets/tab1_ability/lib/jquery-ui.css">
 <link rel="stylesheet" href="assets/tab1_ability/lib/jquery.dataTables.min.css">
-
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
 
@@ -15,7 +15,20 @@ title: Abilities
   <div class="col-md-10">
     <h1 style="margin:64px">Ability?</h1>  
   </div>
+  <div id="3d_abi"></div>
 </div>
+
+
+
+
+<script>
+  // Fetch the JSON data and parse it
+  fetch('3dplot.json').then(response => response.json())
+  .then(data => {
+      // Use Plotly.js to create the graph
+      Plotly.newPlot('3d_abi', data.data, data.layout);
+  });
+</script>
 
 
 <div class="container">
