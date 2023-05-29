@@ -33,7 +33,7 @@ title: Abilities
 </script>
 
 
-<div class="container">
+<div class="container-flourish">
   <div class="flourish-embed" data-src="visualisation/13939565"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 </div>
 
@@ -310,11 +310,9 @@ title: Abilities
         .attr("fill", "#E9C46A")
         
         .on('click', function(d, i) {
-          console.log('Clicked ability: ' + d.Ability);  // 打印点击的能力
           // 找到对应的描述
           let matchedDescription = descriptionData.find(desc => desc.Ability === d.Ability);
           let abilityDescription = matchedDescription ? matchedDescription.description : 'Description not found';
-          console.log('Matched description: ', matchedDescription);
           d3.select('#bar-info')
               .html(`
                   <p style="display: inline-block;"><span style="color:#E9C46A;">${d.Ability}</span>: ${abilityDescription}</p>
