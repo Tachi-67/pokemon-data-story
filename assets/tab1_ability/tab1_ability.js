@@ -79,6 +79,7 @@ d3.csv('assets/tab1_ability/data/ability_description.csv', function(error, descr
       function step(timestamp) {
         if (!start) start = timestamp;
         var progress = timestamp - start;
+        var fraction = Math.min(progress / duration, 1);
         var easedFraction = Math.pow(fraction, 0.5);
         slider.value = Math.floor(easedFraction * maxVal) + 1;
         output.innerHTML = slider.value;
