@@ -147,12 +147,13 @@ title: Abilities
           // 找到对应的描述
           let matchedDescription = descriptionData.find(desc => desc.Ability === d.Ability);
           let abilityDescription = matchedDescription ? matchedDescription.description : 'Description not found';
-
+      
           d3.select('#bar-info')
               .html(`
-                <p style="display: inline-block;">"${d.Ability}: ${abilityDescription}"</p>
+                  <p style="display: inline-block;"><span style="color:#E9C46A;">${d.Ability}</span>: ${abilityDescription}</p>
               `);
-        })
+      })
+      
         .on("mouseover", function(d) {
           let html = `Ability: ${d.Ability}<br/>Count: ${d.Count}`;
           d3.select("#tooltip")
