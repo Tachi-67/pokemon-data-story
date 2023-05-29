@@ -57,13 +57,13 @@ title: Abilities
 
 <div id="dialog2" title="Graph tutorial"  class="modal" style="display:none;">
     <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close2">&times;</span>
 
     <p>
       <b style="color: #E76F51;">Graph</b>
       <ul>
-        <li><b>The 3D plot:</b> Different pokemons with different abilities.</li>
-        <li><b>The word cloud:</b> Abilities, size by their occurence among all pokemons.</li>
+        <li><b style="color:#2A9D8F">The 3D plot:</b> Different pokemons with different abilities.</li>
+        <li><b style="color:#2A9D8F">The word cloud:</b> Abilities, size by their occurence among all pokemons.</li>
       </ul>
     </p>
 
@@ -78,9 +78,9 @@ title: Abilities
     <p>
       <b style="color: #E76F51;">Interaction</b>
       <ul>
-        <li><b>The 3D plot:</b> Hover on each point for detailed ability information for each pokemon.</li>
-        <li>Click on dots on the right to filter pokemons by the abilies they have.</li>
-        <li><b>The word cloud:</b> Hover on each word for ability counts.</li>
+        <li><b style="color:#2A9D8F">The 3D plot:</b> Hover on each point for detailed ability information for each pokemon.</li>
+        <li>Click on dots on the right to filter pokemons by the abilities they have.</li>
+        <li><b style="color:#2A9D8F">The word cloud:</b> Hover on each word for ability counts.</li>
       </ul>
     </p>
     
@@ -181,9 +181,9 @@ title: Abilities
       modal2.style.display = "block";
   });
   
-  document.getElementsByClassName("close")[1].addEventListener("click", function() {
-      modal2.style.display = "none";
-  });
+  document.getElementsByClassName("close2")[0].addEventListener("click", function() {
+    modal2.style.display = "none";
+});
   
   window.addEventListener("click", function(event) {
       if (event.target == modal2) {
