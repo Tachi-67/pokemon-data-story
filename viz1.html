@@ -19,13 +19,6 @@ title: Abilities
 
 <div id="dialog" title="Graph tutorial" class="container" style="display:none;">
   <p>
-    <b>Information</b>
-    <ul>
-      <li>Every pokemon has a `Tier` attribute, among them, the `OU` rank signals the strongest pokemons.</li>
-      <li>Here we sort the top 10 abilities by their occurrence in the `OU` pokemons.</li> 
-    </ul>    
-  </p>
-  <p>
     <b>Graph</b>
     <ul>
       <li>A bar chart showing the occurrence of an ability among the `OU` pokemons.</li>
@@ -37,6 +30,15 @@ title: Abilities
       <li>Click on each bar to view detailed information about the ability.</li>
     </ul>
   </p>
+  <p>
+    <b>Information</b>
+    <ul>
+      <li>Every pokemon has a `Tier` attribute, among them, the `OU` rank signals the strongest pokemons.</li>
+      <li>Here we sort the top 10 abilities by their occurrence in the `OU` pokemons.</li> 
+    </ul>    
+  </p>
+
+
 </div>
 
 <div class="container">
@@ -55,7 +57,14 @@ title: Abilities
 
 
 <script>
-   
+  document.getElementById("opener").addEventListener("click", function() {
+    var dialog = document.getElementById("dialog");
+    if (dialog.style.display === "none") {
+        dialog.style.display = "block";
+    } else {
+        dialog.style.display = "none";
+    }
+  });
   
   d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
     if (error) throw error;
@@ -102,26 +111,5 @@ title: Abilities
   });
 </script>
 
-<script>
-  $(document).ready(function() {
-    $( "#dialog" ).dialog({
-        autoOpen: false,
-        show: {
-            effect: "blind",
-            duration: 100
-        },
-        hide: {
-            effect: "blind",
-            duration: 100
-        },
-        width: 1000
-    });
- 
-    $( "#opener" ).on( "click", function() {
-        $( "#dialog" ).dialog( "open" );
-    });
-});
-
-</script>
 
 
