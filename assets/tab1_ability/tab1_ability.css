@@ -97,3 +97,34 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+  .slider {
+    -webkit-appearance: none;
+    height: 300px;  /* Match the height with your chart */
+    width: 2px;  /* Thin slider */
+    background: #2A9D8F;  /* Slider color */
+    outline: none;
+    -webkit-transform: rotateZ(-270deg);  /* Rotate slider */
+    transform: rotateZ(-270deg);  /* Rotate slider */
+    position: absolute;  /* Positioning slider */
+    right: 50px;  /* Adjust according to your needs */
+    top: 50%;  /* Adjust according to your needs */
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;  /* Slider handle width */
+    height: 25px;  /* Slider handle height */
+    background: #2A9D8F;  /* Slider handle color */
+    cursor: pointer;  /* Cursor on hover */
+    border-radius: 50%;  /* Circular slider handle */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;  /* Slider handle width */
+    height: 25px;  /* Slider handle height */
+    background: #2A9D8F;  /* Slider handle color */
+    cursor: pointer;  /* Cursor on hover */
+    border-radius: 50%;  /* Circular slider handle */
+  }
