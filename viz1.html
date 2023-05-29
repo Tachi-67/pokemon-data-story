@@ -112,22 +112,12 @@ title: Abilities
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x))
-        .selectAll("text")  
-        .style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", ".15em")
-        .attr("transform", "rotate(-45)");
+      .selectAll("text")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end");
 
-        svg.append("g")
-        .call(d3.axisLeft(y))
-        .append("text")
-        .attr("fill", "#000")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", "0.71em")
-        .attr("text-anchor", "end")
-        .text("Occurance Count");
-      
+    svg.append("g")
+        .call(d3.axisLeft(y));
 
     svg.selectAll(".bar")
         .data(data)
@@ -137,24 +127,24 @@ title: Abilities
         .attr("width", x.bandwidth())
         .attr("y", d => y(d.Count))
         .attr("height", d => height - y(d.Count))
-        .style("fill", "2A9D8F")
+        .attr("fill", "#2A9D8F")
         .on('click', function(d, i) {
             d3.select('#bar-info').html(`<p>You clicked on ability ${d.Ability} with count ${d.Count}</p>`);
         })
-        .on('mouseover', function(event, d) {
-          d3.select('#tooltip')
-            .style('opacity', 1)
-            .html(`Ability: ${d.Ability}<br/>Count: ${d.Count}`)
-            .style('left', (event.pageX + 10) + 'px') 
-            .style('top', (event.pageY + 10) + 'px');
+        .on("mouseover", function(d) {
+            let html = `Ability: ${d.Ability}<br/>Count: ${d.Count}`;
+            d3.select("#tooltip")
+                .style("opacity", 1)
+                .html(html)
+                .style('left', (event.pageX + 10) + 'px') 
+                .style('top', (event.pageY + 10) + 'px');
         })
-        .on('mouseout', function(d) {
-          d3.select('#tooltip')
-            .style('opacity', 0);
+        .on("mouseout", function(d) {
+            d3.select("#tooltip")
+                .style("opacity", 0);
         });
   });
 </script>
-
 
 
 
