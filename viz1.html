@@ -18,6 +18,8 @@ title: Abilities
 </div>
 
 <div id="dialog" title="Graph tutorial"  class="modal" style="display:none;">
+    <div class="modal-content">
+    <span class="close">&times;</span>
   <p>
     <b>Graph</b>
     <ul>
@@ -37,7 +39,7 @@ title: Abilities
       <li>Here we sort the top 10 abilities by their occurrence in the `OU` pokemons.</li> 
     </ul>    
   </p>
-
+</div>
 
 </div>
 
@@ -57,16 +59,25 @@ title: Abilities
 
 
 <script>
-  document.getElementById("opener").addEventListener("click", function() {
-    var dialog = document.getElementById("dialog");
-    if (dialog.style.display === "none") {
-        dialog.style.display = "block";
-    } else {
-        dialog.style.display = "none";
-    }
-});
+  var modal = document.getElementById("dialog");
 
+  document.getElementById("opener").addEventListener("click", function() {
+      modal.style.display = "block";
+  });
   
+  document.getElementsByClassName("close")[0].addEventListener("click", function() {
+      modal.style.display = "none";
+  });
+  
+  window.addEventListener("click", function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  });
+  
+</script>
+  
+<script>
   d3.csv('tab1_ability/data/top10_abilities.csv', function(error, data) {
     if (error) throw error;
 
