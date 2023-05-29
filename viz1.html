@@ -150,7 +150,7 @@ title: Abilities
 
           d3.select('#bar-info')
               .html(`
-                <p style="display: inline-block;">${d.Ability}": "{abilityDescription}</p>
+                <p style="display: inline-block;">"${d.Ability}: ${abilityDescription}"</p>
               `);
         })
         .on("mouseover", function(d) {
