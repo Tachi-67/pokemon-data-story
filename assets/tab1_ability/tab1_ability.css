@@ -1,0 +1,135 @@
+.node {
+  cursor: pointer;
+}
+
+.link {
+  fill: none;
+  stroke: #224559;
+  cursor: pointer;
+}
+
+.ticks {
+  font: 13px sans-serif;
+  fill: black;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: square;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 13px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  cursor: pointer;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+
+
+.range-sliderR {
+  position:relative;
+}
+.range-sliderR:before {
+  position: absolute;
+  left: 0;
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+.range-sliderR:after {
+  position: absolute;
+  right: 0;
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  padding-top: 10%; 
+  left: 15%;
+  top: 0;
+  width: 70%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%; 
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+}
+.close2 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.close2:hover,
+.close2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bar {
+  fill: #E9C46A;
+  stroke: #E76F51;
+  stroke-width: 2px;
+}
+#bar-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-container {
+  margin-left: 64px; /* Adjust this value as needed */
+}
+
+.p {
+  font-size: 24px;
+}
+
+
+

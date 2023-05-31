@@ -1,33 +1,33 @@
 ---
 layout: articles
-title: Map
+title: Attributes
 ---
 
 
 <link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="assets/tab1_network_site/tab1_network.css"/>
-<link rel="stylesheet" href="assets/tab1_network_site/lib/jquery-ui.css">
-<link rel="stylesheet" href="assets/tab1_network_site/lib/jquery.dataTables.min.css">
+<link rel="stylesheet" href="assets/tab1_ability/tab1_ability.css"/>
+<link rel="stylesheet" href="assets/tab1_ability/lib/jquery-ui.css">
+<link rel="stylesheet" href="assets/tab1_ability/lib/jquery.dataTables.min.css">
 <link rel="stylesheet" href="assets/css/viz2.css">
 <link rel="stylesheet" type="text/css" href="assets/css/generation_nature.css">
 
 
 
-<div id="dialog" title="Nature Tutorial">
+<div id="dialog" title="Attribute Tutorial">
 
-<script src="assets/tab1_network_site/lib/jquery.min.js"></script>
-<script src="assets/tab1_network_site/lib/jquery-3.6.0.js"></script>
-<script src="assets/tab1_network_site/lib/jquery-ui.js"></script>
-<script src="assets/tab1_network_site/lib/jquery.dataTables.min.js"></script>
+<script src="assets/tab1_ability/lib/jquery.min.js"></script>
+<script src="assets/tab1_ability/lib/jquery-3.6.0.js"></script>
+<script src="assets/tab1_ability/lib/jquery-ui.js"></script>
+<script src="assets/tab1_ability/lib/jquery.dataTables.min.js"></script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
   <div id="text-container"></div>
-  <h1> Does the natures of pokemons decide their usage rate?</h1>
-  <p>   In the battle, we definitely want to have Each pokemon's 6 basic natures: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible. In this part, we are more focused on the 
-    statistical distribution of natures of pokemons to see whether the pokemons' usage rate in pokemon battles is positively related to their natures.
+  <h1> Do the attributes of pokemons decide their usage rate?</h1>
+  <p>   In the battle, we definitely want to have Each pokemon's 6 basic attributes: HP, Attack, Defense, Special Attack, Special Defense and Speed as large as possible. In this part, we are more focused on the 
+    statistical distribution of attributes of pokemons to see whether the pokemons' usage rate in pokemon battles is positively related to their attributes.
 </p>
     <h1>Tiers</h1>
 <p>
@@ -35,17 +35,17 @@ title: Map
   The Tier of pokemons consists of values: 'Uber', 'RU', 'OU', 'UUBL','UU','RUBL', 'RU', 'NUBL', 'NU','PUBL', 'PU' and 'LC'. 
   Since 'Uber' represents the pokemons that are banned using and 'LC' represents the pokemons that are too weak to be taken into account 
   when players are arranging their teams, we only use the left tiers. Therefore, the left ones are 'OU', 'UUBL','UU','RUBL', 'RU','NUBL', 'NU','PUBL' and'PU', 
-  where 'OU' represents the most frequently used ones and 'PU' the least. 
-  Then, it is common to believe the total of 6 basic natures reveals a pokemon's power. A higher of total number is, a stronger pokemon is revealed. 
-  Therefore, we want to visualize the relation between Tier and the natures as follows. We can see it almost meets our expectations. For all 6 natures of pokemons, we can see that 
-  all pokemons in OU have higher amount of 6 natures.
+  where 'OU' represents the most frequently used ones and 'PU' the least. And we generally only focus on pokemons in Tier "OU".
+  Then, it is common to believe the total of 6 basic attributes reveals a pokemon's power. The higher of total number is, the stronger pokemon is revealed. 
+  Therefore, we want to visualize the relation between Tier and the attributes as follows. We can see it almost meets our expectations. For all 6 attributes of pokemons, we can see that 
+  all pokemons in OU have higher amount of 6 attributes.
 </p>
 
 </body>
 
 <head>
   <meta charset="UTF-8">
-  <title>Pokemon Natures Distribution</title>
+  <title>Pokemon Attributes Distribution</title>
   <!--<link rel="stylesheet" type="text/css" href="asset/css/six_natures.css">-->
   
   <style>
@@ -69,7 +69,7 @@ title: Map
 </head>
 
 <body>
-  <h2>Pokemon 6 Natures Distribution</h2>
+  <h2>Pokemon 6 Attributes' Distribution</h2>
   <div class="six_natures">
     <div id="HP_chart_all" class="chart"></div>
     <div id="Attack_chart_all" class="chart"></div>
@@ -82,9 +82,9 @@ title: Map
   <br>
   <br>
   <p>
-    We can see that most pokemons' 6 natures's figures are centered in 0-90. We then illustrate the natures of OU pokemons.
+    We can see that most pokemons' 6 attributes' figures are centered in 0-90. We then illustrate the attributes of OU pokemons.
   </p>
-  <h2>6 Natures Distribution for Tier OU</h2>
+  <h2>6 Attributes' Distribution for Tier OU</h2>
   <div class="six_natures">
     <div id="HP_chart" class="chart"></div>
     <div id="Attack_chart" class="chart"></div>
@@ -97,16 +97,17 @@ title: Map
   <br>
   <br>
   <br>
-  <p> In contrast, most pokemons with Tier OU have a figure of more than 90 in 6 natures.</p>
+  <p> In contrast, most pokemons with Tier OU have a figure of more than 90 in 6 attributes.</p>
   <br>
   <br>
   <br>
-  <h1> Does the later generaion have pokemons with higher natures? </h1>
+  <h1> Does the later generation have pokemons with higher attributes? </h1>
   <h2> Generation Distribution </h2>
   <p>
     Generally, a game series will introduce more powerful figures(or characters) when they promote a new generation in order that gamers want to follow the new generation. The later a pokemon is introduced, its possibility of being stronger is higher as well.
-    In order to see whether pokemon games also obey this routine, we will illustrate the changes of each generations. You can use buttion to see the changes in the mean value of each nature of pokemons as well as the base total of them.
+    In order to see whether pokemon games also obey this routine, we will illustrate the changes of each generations. You can use buttion to see the changes in the mean value of each attribute of pokemons as well as the base total of them.
     (Base total = HP + Attack + Defense + Special Attack + Special Defense + Speed)
+    Find the variations of pokemon attributes by generation by pressing the button below.
   </p>
   <select id="chartSelect" onchange="changeChart()">
     <option value="assets/images/blank_plot.html"> - </option>
@@ -151,17 +152,17 @@ function changeChart() {
   <br>
   <br>
   <p>
-    We can see that despite the 4th generation has a specially high number in mean figures, the trends of pokemon games obey the mentioned routine.
+    We can see that although the 4th generation has a specially high number in mean figures, the trends of pokemon games obey the mentioned routine.
   </p>
 </body>
 
 
 
 <body>
-  <h1> How to select the OU pokemons by their natures?</h1>
+  <h1> How to select the OU pokemons by their attributes?</h1>
   <p>
-    In pokemon battles, in order to win over other gamers, generally we will select pokemons with higher natures. Therefore, OU pokemon list is created. When making a team, we want to select a pokemon purposely, i.e. a pokemon with certain features
-    in natures distribution. For example, we want to select a pokemon with high attack and fast speed. Therefore, in order to visualize each pokemon's natures directly, we create the radar chart below
+    In pokemon battles, in order to win over other gamers, generally we will select pokemons with higher attributes. Therefore, OU pokemon list is created. When making a team, we want to select a pokemon purposely, i.e. a pokemon with certain features
+    in distributes' distribution. For example, we want to select a pokemon with high attack and fast speed. Therefore, in order to visualize each pokemon's natures directly, we create the radar chart below
     so that we can see whether a pokemon can meet our demand.
   </p>
   <h2> OU radar chart</h2>
