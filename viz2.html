@@ -32,10 +32,11 @@ title: Attributes
     <h1>Tiers</h1>
 <p>
       We believe that a pokemon that is used more frequently is more useful. This usage rate is what the Tier stands for.
-  The Tier of pokemon consists of values: 'Uber', 'RU', 'OU', 'UUBL','UU','RUBL', 'RU', 'NUBL', 'NU','PUBL', 'PU' and 'LC'. 
+  The Tier of pokemon consists of values: 'Uber', 'RU', 'OU', 'UUBL', 'UU', 'RUBL', 'RU', 'NUBL', 'NU', 'PUBL', 'PU', and 'LC'. 
   'Uber' represents the pokemons that are banned. 'LC' represents the pokemons that are too weak to be taken into account. 
-  When players are arranging their teams, we can only use the rest of tiers. Therefore, the available tiers are 'OU', 'UUBL','UU','RUBL', 'RU','NUBL', 'NU','PUBL', and'PU', 
-  where 'OU' represents the most frequently used ones and 'PU' the least. We generally only focus on pokemon in Tier "OU".
+  When players are arranging their teams, we can only use the rest of tiers. Therefore, the available tiers are 'OU', 'UUBL', 'UU', 
+  'RUBL', 'RU', 'NUBL', 'NU', 'PUBL', and 'PU', 
+  where 'OU' represents the most frequently used ones and 'PU' the least. We generally only focus on pokemon in Tier 'OU'.
   Then, it is common to believe the total of 6 basic attributes reveals a pokemon's power. The higher the total number is, the stronger the pokemon is. 
   Therefore, we want to visualize the relation between Tier and attributes as follows. We can see it is what we expected. For all 6 attributes of pokemon, we can see that 
   all pokemons in OU have higher values for the 6 attributes.
@@ -97,7 +98,7 @@ title: Attributes
   <br>
   <br>
   <br>
-  <p> In contrast, most pokemons with Tier OU have a figure of more than 90 in 6 attributes.</p>
+  <p> In contrast, most pokemons with Tier OU have a figure of more than 90 for 6 attributes.</p>
   <br>
   <br>
   <br>
@@ -107,7 +108,7 @@ title: Attributes
     Generally, a game series will introduce more powerful figures (or characters) when they promote a new generation so that gamers would want to follow the new generation. 
     The later a pokemon is introduced, its possibility of being stronger is higher as well.
     In order to see whether pokemon games obey this routine, we will illustrate the changes of each generation. You can use the dropdown below to see the changes in the mean value of each attribute as well as the base total of them.
-    (Base total = HP + Attack + Defense + Special Attack + Special Defense + Speed)
+    (Base total = HP + Attack + Defense + Special Attack + Special Defense + Speed). 
     Find the variations of pokemon attributes by generation by pressing the button below.
   </p>
   <select id="chartSelect" onchange="changeChart()">
