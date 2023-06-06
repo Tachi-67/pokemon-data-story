@@ -1,4 +1,4 @@
-This repo is ARCHIVED on 06/Jun./2023
+This repo is ARCHIVED on 06/June/2023
 
 This is our website repo for [EPFL COM-480 Data Visualization](https://edu.epfl.ch/coursebook/en/data-visualization-COM-480)
 
