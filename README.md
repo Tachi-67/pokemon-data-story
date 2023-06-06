@@ -1,3 +1,5 @@
+This repo is ARCHIVED on 06/Jun./2023
+
 This is our website repo for [EPFL COM-480 Data Visualization](https://edu.epfl.ch/coursebook/en/data-visualization-COM-480)
 
 Visit our [data story website](https://tachi-67.github.io/pokemon-data-story/)!
